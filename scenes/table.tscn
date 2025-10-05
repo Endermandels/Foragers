@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=3 format=3 uid="uid://ddouxdy6etpfm"]
 
 [ext_resource type="PackedScene" uid="uid://cf4pitc4pv4dq" path="res://scenes/animal_card.tscn" id="1_554dl"]
+[ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_i6upf"]
 
 [node name="Table" type="Node2D"]
 
@@ -9,39 +10,6 @@ offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0.3154, 0.38, 0.330473, 1)
 metadata/_edit_lock_ = true
-
-[node name="AnimalCard10" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(152, 72)
-
-[node name="FaceDown" parent="AnimalCard10" index="1"]
-visible = true
-
-[node name="AnimalCard16" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(592, 408)
-
-[node name="CardBorder" parent="AnimalCard16/FaceUp" index="0"]
-metadata/_edit_use_anchors_ = true
-
-[node name="CardBackground" parent="AnimalCard16/FaceUp" index="1"]
-metadata/_edit_use_anchors_ = true
-
-[node name="StatsBackground" parent="AnimalCard16/FaceUp" index="2"]
-metadata/_edit_use_anchors_ = true
-
-[node name="ImageBorder" parent="AnimalCard16/FaceUp" index="3"]
-metadata/_edit_use_anchors_ = true
-
-[node name="ImageBackground" parent="AnimalCard16/FaceUp" index="4"]
-metadata/_edit_use_anchors_ = true
-
-[node name="FaceDown" parent="AnimalCard16" index="1"]
-visible = true
-
-[node name="ColorRect3" parent="AnimalCard16/FaceDown" index="0"]
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect4" parent="AnimalCard16/FaceDown" index="1"]
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimalCard11" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(240, 72)
@@ -87,6 +55,12 @@ position = Vector2(448, 240)
 
 [node name="AnimalCard27" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(536, 240)
+
+[node name="FoodCard" parent="." instance=ExtResource("2_i6upf")]
+position = Vector2(592, 408)
+
+[node name="FoodCard2" parent="." instance=ExtResource("2_i6upf")]
+position = Vector2(152, 72)
 
 [node name="P1HP" type="Control" parent="."]
 layout_mode = 3
@@ -146,6 +120,3 @@ offset_bottom = 65.0
 theme_override_font_sizes/font_size = 72
 text = "50"
 metadata/_edit_use_anchors_ = true
-
-[editable path="AnimalCard10"]
-[editable path="AnimalCard16"]
