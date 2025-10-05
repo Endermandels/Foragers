@@ -11,7 +11,7 @@ color = Color(0.3154, 0.38, 0.330473, 1)
 metadata/_edit_lock_ = true
 
 [node name="AnimalCard10" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(48, 72)
+position = Vector2(152, 72)
 
 [node name="FaceDown" parent="AnimalCard10" index="1"]
 visible = true
@@ -43,50 +43,23 @@ metadata/_edit_use_anchors_ = true
 [node name="ColorRect4" parent="AnimalCard16/FaceDown" index="1"]
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimalCard22" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(592, 240)
-
-[node name="CardBorder" parent="AnimalCard22/FaceUp" index="0"]
-metadata/_edit_use_anchors_ = true
-
-[node name="CardBackground" parent="AnimalCard22/FaceUp" index="1"]
-metadata/_edit_use_anchors_ = true
-
-[node name="StatsBackground" parent="AnimalCard22/FaceUp" index="2"]
-metadata/_edit_use_anchors_ = true
-
-[node name="ImageBorder" parent="AnimalCard22/FaceUp" index="3"]
-metadata/_edit_use_anchors_ = true
-
-[node name="ImageBackground" parent="AnimalCard22/FaceUp" index="4"]
-metadata/_edit_use_anchors_ = true
-
-[node name="FaceDown" parent="AnimalCard22" index="1"]
-visible = true
-
-[node name="ColorRect3" parent="AnimalCard22/FaceDown" index="0"]
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect4" parent="AnimalCard22/FaceDown" index="1"]
-metadata/_edit_use_anchors_ = true
-
 [node name="AnimalCard11" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(240, 72)
 
 [node name="AnimalCard17" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(400, 408)
+position = Vector2(504, 408)
 
 [node name="AnimalCard18" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(312, 408)
+position = Vector2(416, 408)
 
 [node name="AnimalCard19" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(224, 408)
+position = Vector2(328, 408)
 
 [node name="AnimalCard20" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(136, 408)
+position = Vector2(240, 408)
 
 [node name="AnimalCard21" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(48, 408)
+position = Vector2(152, 408)
 
 [node name="AnimalCard12" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(328, 72)
@@ -101,20 +74,78 @@ position = Vector2(504, 72)
 position = Vector2(592, 72)
 
 [node name="AnimalCard23" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(120, 240)
+position = Vector2(184, 240)
 
 [node name="AnimalCard24" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(208, 240)
+position = Vector2(272, 240)
 
 [node name="AnimalCard25" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(296, 240)
+position = Vector2(360, 240)
 
 [node name="AnimalCard26" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(384, 240)
+position = Vector2(448, 240)
 
 [node name="AnimalCard27" parent="." instance=ExtResource("1_554dl")]
-position = Vector2(472, 240)
+position = Vector2(536, 240)
+
+[node name="P1HP" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 248.0
+offset_right = 48.0
+offset_bottom = 288.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="P1HP"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="P1HP"]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 70.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 72
+text = "50"
+
+[node name="P2HP" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 48.0
+offset_bottom = 208.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="P2HP"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = -0.2
+anchor_right = -0.2
+anchor_bottom = -0.2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 72.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="P2HP"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = -0.2
+anchor_right = -0.2
+anchor_bottom = -0.2
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 78.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 72
+text = "50"
+metadata/_edit_use_anchors_ = true
 
 [editable path="AnimalCard10"]
 [editable path="AnimalCard16"]
-[editable path="AnimalCard22"]
