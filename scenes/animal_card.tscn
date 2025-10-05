@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf4pitc4pv4dq"]
+
+[ext_resource type="Texture2D" uid="uid://c3pbgirmc6psf" path="res://assets/Fox Sprite Sheet.png" id="1_m05vt"]
+
+[node name="AnimalCard" type="Node2D"]
+
+[node name="FaceUp" type="Node2D" parent="."]
+
+[node name="CardBorder" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47, 0.27025, 0.2303, 1)
+
+[node name="CardBackground" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -30.0
+offset_right = 18.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.966, 0.94, 1)
+
+[node name="StatsBackground" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = 6.0
+offset_right = 16.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.8, 0.8, 1)
+
+[node name="ImageBorder" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -28.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17, 0.17, 0.17, 1)
+
+[node name="ImageBackground" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -27.0
+offset_right = 15.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.459535, 0.73, 0.4453, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="FaceUp"]
+position = Vector2(0, -23)
+texture = ExtResource("1_m05vt")
+hframes = 14
+vframes = 7
+
+[node name="FaceDown" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect3" type="ColorRect" parent="FaceDown"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94, 0.5123, 0.282, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="FaceDown"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -30.0
+offset_right = 18.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.59, 0.252717, 0.177, 1)
