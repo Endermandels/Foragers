@@ -21,6 +21,13 @@ window/size/viewport_width=640
 window/size/viewport_height=480
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom_font="res://assets/fonts/m5x7.ttf"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

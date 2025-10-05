@@ -12,14 +12,12 @@ metadata/_edit_lock_ = true
 
 [node name="AnimalCard10" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(48, 72)
-scale = Vector2(2, 2)
 
 [node name="FaceDown" parent="AnimalCard10" index="1"]
 visible = true
 
 [node name="AnimalCard16" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(592, 408)
-scale = Vector2(2, 2)
 
 [node name="CardBorder" parent="AnimalCard16/FaceUp" index="0"]
 metadata/_edit_use_anchors_ = true
@@ -47,7 +45,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimalCard22" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(592, 240)
-scale = Vector2(2, 2)
 
 [node name="CardBorder" parent="AnimalCard22/FaceUp" index="0"]
 metadata/_edit_use_anchors_ = true
@@ -75,63 +72,48 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimalCard11" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(240, 72)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard17" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(400, 408)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard18" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(312, 408)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard19" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(224, 408)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard20" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(136, 408)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard21" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(48, 408)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard12" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(328, 72)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard13" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(416, 72)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard14" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(504, 72)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard15" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(592, 72)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard23" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(120, 240)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard24" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(208, 240)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard25" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(296, 240)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard26" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(384, 240)
-scale = Vector2(2, 2)
 
 [node name="AnimalCard27" parent="." instance=ExtResource("1_554dl")]
 position = Vector2(472, 240)
-scale = Vector2(2, 2)
 
 [editable path="AnimalCard10"]
 [editable path="AnimalCard16"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf4pitc4pv4dq"]
+[gd_scene load_steps=4 format=3 uid="uid://cf4pitc4pv4dq"]
 
-[ext_resource type="Texture2D" uid="uid://c3pbgirmc6psf" path="res://assets/Fox Sprite Sheet.png" id="1_m05vt"]
+[ext_resource type="Texture2D" uid="uid://c3pbgirmc6psf" path="res://assets/images/Fox Sprite Sheet.png" id="1_m05vt"]
+[ext_resource type="Texture2D" uid="uid://b84nm258dye00" path="res://assets/images/attack-icon.png" id="2_pbkbd"]
+[ext_resource type="Texture2D" uid="uid://c18iv477p1rxe" path="res://assets/images/hp-icon.png" id="3_08c6c"]
 
 [node name="AnimalCard" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="FaceUp" type="Node2D" parent="."]
 
@@ -32,7 +35,7 @@ offset_right = 18.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.966, 0.94, 1)
+color = Color(0.941176, 0.513726, 0.282353, 1)
 
 [node name="StatsBackground" type="ColorRect" parent="FaceUp"]
 anchors_preset = 8
@@ -46,7 +49,7 @@ offset_right = 16.0
 offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.8, 0.8, 1)
+color = Color(0.96, 0.86064, 0.7392, 1)
 
 [node name="ImageBorder" type="ColorRect" parent="FaceUp"]
 anchors_preset = 8
@@ -75,11 +78,39 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.459535, 0.73, 0.4453, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="FaceUp"]
+[node name="ImageSprite" type="Sprite2D" parent="FaceUp"]
 position = Vector2(0, -23)
 texture = ExtResource("1_m05vt")
 hframes = 14
 vframes = 7
+
+[node name="ATKLabel" type="Label" parent="FaceUp"]
+offset_left = -14.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.470588, 0.270588, 0.231373, 1)
+theme_override_font_sizes/font_size = 16
+text = "2"
+
+[node name="HPLabel" type="Label" parent="FaceUp"]
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 15.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.470588, 0.270588, 0.231373, 1)
+theme_override_font_sizes/font_size = 16
+text = "2"
+
+[node name="ATKSprite" type="Sprite2D" parent="FaceUp"]
+position = Vector2(-14, 20)
+texture = ExtResource("2_pbkbd")
+centered = false
+
+[node name="ATKSprite2" type="Sprite2D" parent="FaceUp"]
+position = Vector2(9, 20)
+texture = ExtResource("3_08c6c")
+centered = false
 
 [node name="FaceDown" type="Node2D" parent="."]
 visible = false
