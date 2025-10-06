@@ -1,0 +1,169 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddouxdy6etpfm"]
+
+[ext_resource type="PackedScene" uid="uid://cf4pitc4pv4dq" path="res://scenes/animal_card.tscn" id="1_dmdyd"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
+[ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
+[ext_resource type="Texture2D" uid="uid://dg78luprubn11" path="res://assets/images/meat-icon.png" id="3_ykurb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qe6os"]
+shader = ExtResource("1_h1wkj")
+shader_parameter/radius = 1.0
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0.539138, 0.61, 0.5063, 1)
+
+[node name="Table" type="Node2D" parent="."]
+
+[node name="AnimalCard11" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(240, 72)
+
+[node name="AnimalCard17" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(504, 408)
+
+[node name="AnimalCard18" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(416, 408)
+
+[node name="AnimalCard19" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(328, 408)
+
+[node name="AnimalCard20" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(240, 408)
+
+[node name="AnimalCard21" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(152, 408)
+
+[node name="AnimalCard12" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(328, 72)
+
+[node name="AnimalCard13" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(416, 72)
+
+[node name="AnimalCard14" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(504, 72)
+
+[node name="AnimalCard15" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(592, 72)
+
+[node name="AnimalCard23" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(184, 240)
+
+[node name="AnimalCard24" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(272, 240)
+
+[node name="AnimalCard25" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(360, 240)
+
+[node name="AnimalCard26" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(448, 240)
+
+[node name="AnimalCard27" parent="Table" instance=ExtResource("1_dmdyd")]
+position = Vector2(536, 240)
+
+[node name="FoodCard" parent="Table" instance=ExtResource("2_qlt8m")]
+position = Vector2(592, 408)
+
+[node name="FoodCard2" parent="Table" instance=ExtResource("2_qlt8m")]
+position = Vector2(152, 72)
+
+[node name="FoodSprite" parent="Table/FoodCard2/FaceUp" index="7"]
+texture = ExtResource("3_ykurb")
+
+[node name="P1HP" type="Control" parent="Table"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 248.0
+offset_right = 48.0
+offset_bottom = 288.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Table/P1HP"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="Table/P1HP"]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 70.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 72
+text = "20"
+
+[node name="P2HP" type="Control" parent="Table"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 48.0
+offset_bottom = 208.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Table/P2HP"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = -0.2
+anchor_right = -0.2
+anchor_bottom = -0.2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 72.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Table/P2HP"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = -0.2
+anchor_right = -0.2
+anchor_bottom = -0.2
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 78.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 72
+text = "20"
+metadata/_edit_use_anchors_ = true
+
+[node name="BlurRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qe6os")
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="Hand" type="Node2D" parent="."]
+
+[node name="AnimalCard11" parent="Hand" instance=ExtResource("1_dmdyd")]
+position = Vector2(96, 328)
+scale = Vector2(4, 4)
+
+[node name="AnimalCard12" parent="Hand" instance=ExtResource("1_dmdyd")]
+position = Vector2(176, 328)
+scale = Vector2(4, 4)
+
+[node name="AnimalCard13" parent="Hand" instance=ExtResource("1_dmdyd")]
+position = Vector2(256, 328)
+scale = Vector2(4, 4)
+
+[node name="AnimalCard14" parent="Hand" instance=ExtResource("1_dmdyd")]
+position = Vector2(336, 328)
+scale = Vector2(4, 4)
+
+[node name="AnimalCard15" parent="Hand" instance=ExtResource("1_dmdyd")]
+position = Vector2(408, 328)
+scale = Vector2(4, 4)
+
+[node name="AnimalCard16" parent="Hand" instance=ExtResource("1_dmdyd")]
+position = Vector2(480, 328)
+scale = Vector2(4, 4)
+
+[node name="AnimalCard17" parent="Hand" instance=ExtResource("1_dmdyd")]
+position = Vector2(544, 328)
+scale = Vector2(4, 4)
+
+[editable path="Table/FoodCard2"]

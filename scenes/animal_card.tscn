@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf4pitc4pv4dq"]
+[gd_scene load_steps=5 format=3 uid="uid://cf4pitc4pv4dq"]
 
 [ext_resource type="Texture2D" uid="uid://c3pbgirmc6psf" path="res://assets/images/Fox Sprite Sheet.png" id="1_m05vt"]
 [ext_resource type="Texture2D" uid="uid://b84nm258dye00" path="res://assets/images/attack-icon.png" id="2_pbkbd"]
 [ext_resource type="Texture2D" uid="uid://c18iv477p1rxe" path="res://assets/images/hp-icon.png" id="3_08c6c"]
+[ext_resource type="Texture2D" uid="uid://dg78luprubn11" path="res://assets/images/meat-icon.png" id="4_nm0rv"]
 
 [node name="AnimalCard" type="Node2D"]
 scale = Vector2(2, 2)
@@ -121,7 +122,7 @@ theme_override_font_sizes/font_size = 16
 text = "Fox"
 
 [node name="ImageSprite" type="Sprite2D" parent="FaceUp"]
-position = Vector2(0, -14.5)
+position = Vector2(-1, -9)
 texture = ExtResource("1_m05vt")
 hframes = 14
 vframes = 7
@@ -134,6 +135,24 @@ centered = false
 [node name="HPSprite" type="Sprite2D" parent="FaceUp"]
 position = Vector2(9, 20)
 texture = ExtResource("3_08c6c")
+centered = false
+
+[node name="FoodSprite1" type="Sprite2D" parent="FaceUp"]
+position = Vector2(12, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_nm0rv")
+centered = false
+
+[node name="FoodSprite2" type="Sprite2D" parent="FaceUp"]
+position = Vector2(9, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_nm0rv")
+centered = false
+
+[node name="FoodSprite3" type="Sprite2D" parent="FaceUp"]
+position = Vector2(6, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_nm0rv")
 centered = false
 
 [node name="FaceDown" type="Node2D" parent="."]
