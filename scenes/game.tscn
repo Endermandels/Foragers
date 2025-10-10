@@ -18,59 +18,20 @@ color = Color(0.539138, 0.61, 0.5063, 1)
 
 [node name="Table" type="Node2D" parent="."]
 
-[node name="AnimalCard11" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(240, 72)
-
-[node name="AnimalCard17" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(504, 408)
-
-[node name="AnimalCard18" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(416, 408)
-
-[node name="AnimalCard19" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(328, 408)
-
-[node name="AnimalCard20" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(240, 408)
-
-[node name="AnimalCard21" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(152, 408)
-
-[node name="AnimalCard12" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(328, 72)
-
-[node name="AnimalCard13" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(416, 72)
-
-[node name="AnimalCard14" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(504, 72)
-
-[node name="AnimalCard15" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(592, 72)
-
-[node name="AnimalCard23" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(184, 240)
-
-[node name="AnimalCard24" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(272, 240)
-
-[node name="AnimalCard25" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(360, 240)
-
-[node name="AnimalCard26" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(448, 240)
-
-[node name="AnimalCard27" parent="Table" instance=ExtResource("1_dmdyd")]
-position = Vector2(536, 240)
-
-[node name="FoodCard" parent="Table" instance=ExtResource("2_qlt8m")]
+[node name="P1FoodDeck" parent="Table" instance=ExtResource("2_qlt8m")]
 position = Vector2(592, 408)
 
-[node name="FoodCard2" parent="Table" instance=ExtResource("2_qlt8m")]
+[node name="FaceDown" parent="Table/P1FoodDeck" index="1"]
+visible = true
+
+[node name="P2FoodDeck" parent="Table" instance=ExtResource("2_qlt8m")]
 position = Vector2(152, 72)
 
-[node name="FoodSprite" parent="Table/FoodCard2/FaceUp" index="7"]
+[node name="FoodSprite" parent="Table/P2FoodDeck/FaceUp" index="7"]
 texture = ExtResource("3_ykurb")
+
+[node name="FaceDown" parent="Table/P2FoodDeck" index="1"]
+visible = true
 
 [node name="P1HP" type="Control" parent="Table"]
 layout_mode = 3
@@ -131,12 +92,46 @@ theme_override_font_sizes/font_size = 72
 text = "20"
 metadata/_edit_use_anchors_ = true
 
+[node name="CardSlots" type="Node2D" parent="Table"]
+
+[node name="P1Slot1" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(504, 408)
+
+[node name="P1Slot2" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(416, 408)
+
+[node name="P1Slot3" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(328, 408)
+
+[node name="P1Slot4" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(240, 408)
+
+[node name="P1Slot5" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(152, 408)
+
+[node name="P2Slot1" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(240, 72)
+
+[node name="P2Slot2" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(328, 72)
+
+[node name="P2Slot3" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(416, 72)
+
+[node name="P2Slot4" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(504, 72)
+
+[node name="P2Slot5" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(592, 72)
+
 [node name="BlurRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_qe6os")
 offset_right = 640.0
 offset_bottom = 480.0
 
 [node name="Hand" type="Node2D" parent="."]
+visible = false
 
 [node name="AnimalCard11" parent="Hand" instance=ExtResource("1_dmdyd")]
 position = Vector2(96, 328)
@@ -166,4 +161,5 @@ scale = Vector2(4, 4)
 position = Vector2(544, 328)
 scale = Vector2(4, 4)
 
-[editable path="Table/FoodCard2"]
+[editable path="Table/P1FoodDeck"]
+[editable path="Table/P2FoodDeck"]
