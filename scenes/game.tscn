@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=10 format=3 uid="uid://ddouxdy6etpfm"]
 
-[ext_resource type="PackedScene" uid="uid://cf4pitc4pv4dq" path="res://scenes/animal_card.tscn" id="1_dmdyd"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
 [ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
 [ext_resource type="Script" path="res://scripts/game_logic.gd" id="2_xmjd3"]
@@ -12,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qe6os"]
 shader = ExtResource("1_h1wkj")
-shader_parameter/radius = 1.0
+shader_parameter/radius = 0.0
 
 [node name="Game" type="Node2D"]
 
@@ -142,10 +141,11 @@ theme_override_font_sizes/font_size = 72
 text = "20"
 metadata/_edit_use_anchors_ = true
 
-[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("deck", "deck_button", "hand_handler")]
+[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("deck", "deck_button", "deck_sprite", "hand_handler")]
 script = ExtResource("5_buma0")
 deck = NodePath("../../GameLogic/P1Deck")
 deck_button = NodePath("TextureButton")
+deck_sprite = NodePath("P1DeckSprite")
 hand_handler = NodePath("../../Hand")
 
 [node name="P1DeckSprite" parent="Table/P1Deck" instance=ExtResource("2_qlt8m")]
@@ -167,37 +167,9 @@ material = SubResource("ShaderMaterial_qe6os")
 offset_right = 640.0
 offset_bottom = 480.0
 
-[node name="Hand" type="Node2D" parent="."]
-visible = false
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("blur_rect")]
 script = ExtResource("7_jk5ww")
-
-[node name="AnimalCard11" parent="Hand" instance=ExtResource("1_dmdyd")]
-position = Vector2(96, 328)
-scale = Vector2(4, 4)
-
-[node name="AnimalCard12" parent="Hand" instance=ExtResource("1_dmdyd")]
-position = Vector2(176, 328)
-scale = Vector2(4, 4)
-
-[node name="AnimalCard13" parent="Hand" instance=ExtResource("1_dmdyd")]
-position = Vector2(256, 328)
-scale = Vector2(4, 4)
-
-[node name="AnimalCard14" parent="Hand" instance=ExtResource("1_dmdyd")]
-position = Vector2(336, 328)
-scale = Vector2(4, 4)
-
-[node name="AnimalCard15" parent="Hand" instance=ExtResource("1_dmdyd")]
-position = Vector2(408, 328)
-scale = Vector2(4, 4)
-
-[node name="AnimalCard16" parent="Hand" instance=ExtResource("1_dmdyd")]
-position = Vector2(480, 328)
-scale = Vector2(4, 4)
-
-[node name="AnimalCard17" parent="Hand" instance=ExtResource("1_dmdyd")]
-position = Vector2(544, 328)
-scale = Vector2(4, 4)
+blur_rect = NodePath("../BlurRect")
 
 [editable path="Table/P2DeckSprite"]
 [editable path="Table/P1Deck/P1DeckSprite"]

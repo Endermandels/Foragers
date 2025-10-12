@@ -15,7 +15,9 @@ func _ready() -> void:
 func draw_card() -> Card:
     if cards.size() == 0:
         return null
-    return cards.pop_at(randi_range(0, cards.size() - 1))
+    var card = cards.pop_at(randi_range(0, cards.size() - 1))
+    remove_child(card)
+    return card
 
 func is_empty() -> bool:
     return cards.size() == 0
