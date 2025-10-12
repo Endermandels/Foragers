@@ -1,0 +1,3 @@
+extends CardHandler
+class_name AnimalCardHandler
+

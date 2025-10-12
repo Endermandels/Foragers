@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://cf4pitc4pv4dq"]
 
+[ext_resource type="Script" path="res://scripts/animal_card_handler.gd" id="1_esvix"]
 [ext_resource type="Texture2D" uid="uid://c3pbgirmc6psf" path="res://assets/images/Fox Sprite Sheet.png" id="1_m05vt"]
-[ext_resource type="Script" path="res://scripts/card_handler.gd" id="1_qtif6"]
 [ext_resource type="Texture2D" uid="uid://b84nm258dye00" path="res://assets/images/attack-icon.png" id="2_pbkbd"]
 [ext_resource type="Texture2D" uid="uid://c18iv477p1rxe" path="res://assets/images/hp-icon.png" id="3_08c6c"]
 [ext_resource type="Texture2D" uid="uid://dg78luprubn11" path="res://assets/images/meat-icon.png" id="4_nm0rv"]
 
 [node name="AnimalCard" type="Node2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_qtif6")
+script = ExtResource("1_esvix")
 
 [node name="FaceUp" type="Node2D" parent="."]
 

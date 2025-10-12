@@ -27,6 +27,7 @@ func spawn_card(card: Card) -> CardHandler:
         return sc
     
     sc.add_child(card)
+    sc.match_card_stats(card)
     sc.global_position = deck_sprite.global_position
 
     return sc
