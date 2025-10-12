@@ -90,6 +90,26 @@ script = ExtResource("4_egx6h")
 plant_amount = 0
 meat_amount = 1
 
+[node name="FoodCard15" type="Node" parent="GameLogic/P1Deck"]
+script = ExtResource("4_egx6h")
+plant_amount = 0
+meat_amount = 1
+
+[node name="FoodCard16" type="Node" parent="GameLogic/P1Deck"]
+script = ExtResource("4_egx6h")
+plant_amount = 0
+meat_amount = 1
+
+[node name="FoodCard17" type="Node" parent="GameLogic/P1Deck"]
+script = ExtResource("4_egx6h")
+plant_amount = 0
+meat_amount = 1
+
+[node name="FoodCard18" type="Node" parent="GameLogic/P1Deck"]
+script = ExtResource("4_egx6h")
+plant_amount = 0
+meat_amount = 1
+
 [node name="P2Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
 
@@ -223,12 +243,13 @@ material = SubResource("ShaderMaterial_qe6os")
 offset_right = 640.0
 offset_bottom = 480.0
 
-[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("blur_rect", "left_bound", "right_bound", "cards")]
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("blur_rect", "left_bound", "right_bound", "hidden_y", "cards")]
 position = Vector2(0, 256)
 script = ExtResource("7_jk5ww")
 blur_rect = NodePath("../BlurRect")
 left_bound = NodePath("LeftBound")
 right_bound = NodePath("RightBound")
+hidden_y = NodePath("HiddenY")
 cards = NodePath("Cards")
 
 [node name="RightBound" type="Node2D" parent="Hand"]
@@ -236,6 +257,9 @@ position = Vector2(576, 0)
 
 [node name="LeftBound" type="Node2D" parent="Hand"]
 position = Vector2(128, 0)
+
+[node name="HiddenY" type="Node2D" parent="Hand"]
+position = Vector2(0, 320)
 
 [node name="Cards" type="Node2D" parent="Hand"]
 
