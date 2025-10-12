@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=11 format=3 uid="uid://ddouxdy6etpfm"]
 
 [ext_resource type="PackedScene" uid="uid://cf4pitc4pv4dq" path="res://scenes/animal_card.tscn" id="1_dmdyd"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
 [ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
+[ext_resource type="Script" path="res://scripts/game_logic.gd" id="2_xmjd3"]
+[ext_resource type="Script" path="res://scripts/card_logic/deck.gd" id="3_txcl7"]
 [ext_resource type="Texture2D" uid="uid://dg78luprubn11" path="res://assets/images/meat-icon.png" id="3_ykurb"]
+[ext_resource type="Script" path="res://scripts/card_logic/food_card.gd" id="4_egx6h"]
+[ext_resource type="Script" path="res://scripts/deck_handler.gd" id="5_buma0"]
+[ext_resource type="Script" path="res://scripts/hand_handler.gd" id="7_jk5ww"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qe6os"]
 shader = ExtResource("1_h1wkj")
@@ -11,27 +16,72 @@ shader_parameter/radius = 1.0
 
 [node name="Game" type="Node2D"]
 
+[node name="GameLogic" type="Node" parent="."]
+script = ExtResource("2_xmjd3")
+
+[node name="P1Deck" type="Node" parent="GameLogic"]
+script = ExtResource("3_txcl7")
+is_player_1 = true
+
+[node name="FoodCard" type="Node" parent="GameLogic/P1Deck"]
+script = ExtResource("4_egx6h")
+plant_amount = 2
+
+[node name="FoodCard2" type="Node" parent="GameLogic/P1Deck"]
+script = ExtResource("4_egx6h")
+plant_amount = 0
+meat_amount = 1
+
+[node name="P2Deck" type="Node" parent="GameLogic"]
+script = ExtResource("3_txcl7")
+
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
 offset_bottom = 480.0
-color = Color(0.539138, 0.61, 0.5063, 1)
+color = Color(0.222345, 0.61, 0.0427, 1)
 
 [node name="Table" type="Node2D" parent="."]
 
-[node name="P1FoodDeck" parent="Table" instance=ExtResource("2_qlt8m")]
-position = Vector2(592, 408)
-
-[node name="FaceDown" parent="Table/P1FoodDeck" index="1"]
-visible = true
-
-[node name="P2FoodDeck" parent="Table" instance=ExtResource("2_qlt8m")]
+[node name="P2DeckSprite" parent="Table" instance=ExtResource("2_qlt8m")]
 position = Vector2(152, 72)
 
-[node name="FoodSprite" parent="Table/P2FoodDeck/FaceUp" index="7"]
+[node name="FoodSprite" parent="Table/P2DeckSprite/FaceUp" index="7"]
 texture = ExtResource("3_ykurb")
 
-[node name="FaceDown" parent="Table/P2FoodDeck" index="1"]
+[node name="FaceDown" parent="Table/P2DeckSprite" index="1"]
 visible = true
+
+[node name="CardSlots" type="Node2D" parent="Table"]
+
+[node name="P1Slot1" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(504, 408)
+
+[node name="P1Slot2" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(416, 408)
+
+[node name="P1Slot3" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(328, 408)
+
+[node name="P1Slot4" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(240, 408)
+
+[node name="P1Slot5" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(152, 408)
+
+[node name="P2Slot1" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(240, 72)
+
+[node name="P2Slot2" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(328, 72)
+
+[node name="P2Slot3" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(416, 72)
+
+[node name="P2Slot4" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(504, 72)
+
+[node name="P2Slot5" type="Node2D" parent="Table/CardSlots"]
+position = Vector2(592, 72)
 
 [node name="P1HP" type="Control" parent="Table"]
 layout_mode = 3
@@ -92,37 +142,24 @@ theme_override_font_sizes/font_size = 72
 text = "20"
 metadata/_edit_use_anchors_ = true
 
-[node name="CardSlots" type="Node2D" parent="Table"]
+[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("deck", "deck_button", "hand_handler")]
+script = ExtResource("5_buma0")
+deck = NodePath("../../GameLogic/P1Deck")
+deck_button = NodePath("TextureButton")
+hand_handler = NodePath("../../Hand")
 
-[node name="P1Slot1" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(504, 408)
+[node name="P1DeckSprite" parent="Table/P1Deck" instance=ExtResource("2_qlt8m")]
+position = Vector2(592, 408)
 
-[node name="P1Slot2" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(416, 408)
+[node name="FaceDown" parent="Table/P1Deck/P1DeckSprite" index="1"]
+visible = true
 
-[node name="P1Slot3" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(328, 408)
-
-[node name="P1Slot4" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(240, 408)
-
-[node name="P1Slot5" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(152, 408)
-
-[node name="P2Slot1" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(240, 72)
-
-[node name="P2Slot2" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(328, 72)
-
-[node name="P2Slot3" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(416, 72)
-
-[node name="P2Slot4" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(504, 72)
-
-[node name="P2Slot5" type="Node2D" parent="Table/CardSlots"]
-position = Vector2(592, 72)
+[node name="TextureButton" type="TextureButton" parent="Table/P1Deck"]
+offset_left = 552.0
+offset_top = 344.0
+offset_right = 632.0
+offset_bottom = 472.0
+mouse_default_cursor_shape = 2
 
 [node name="BlurRect" type="ColorRect" parent="."]
 visible = false
@@ -132,6 +169,7 @@ offset_bottom = 480.0
 
 [node name="Hand" type="Node2D" parent="."]
 visible = false
+script = ExtResource("7_jk5ww")
 
 [node name="AnimalCard11" parent="Hand" instance=ExtResource("1_dmdyd")]
 position = Vector2(96, 328)
@@ -161,5 +199,5 @@ scale = Vector2(4, 4)
 position = Vector2(544, 328)
 scale = Vector2(4, 4)
 
-[editable path="Table/P1FoodDeck"]
-[editable path="Table/P2FoodDeck"]
+[editable path="Table/P2DeckSprite"]
+[editable path="Table/P1Deck/P1DeckSprite"]

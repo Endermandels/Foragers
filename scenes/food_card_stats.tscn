@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dao0hto508b50"]
+
+[ext_resource type="Script" path="res://scripts/card_logic/food_card.gd" id="1_waqk6"]
+
+[node name="FoodCardStats" type="Node"]
+script = ExtResource("1_waqk6")
