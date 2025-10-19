@@ -7,7 +7,10 @@ class_name EncountersRowHandler
 
 @export_group("External Nodes")
 @export var game_logic: GameLogic
+@export var hand: Hand
 @export var encounters_row: EncountersRow
+@export var animals_handler: AnimalsHandler
+@export var animals_row: AnimalsRow
 
 @export_group("Internal Nodes")
 @export var left_bound: Node2D
@@ -33,7 +36,7 @@ func get_animal_card() -> Array:
 func spawn_card() -> void:
 	## Spawn a random Animal card for the encounters row
 	var animal_card_info = get_animal_card()
-	var sc: CardHandler = animal_card_info[0]
+	var sc: AnimalCardHandler = animal_card_info[0]
 	var card: AnimalCard = animal_card_info[1]
 	
 	encounters_row.add_child(card)
@@ -41,12 +44,25 @@ func spawn_card() -> void:
 	cards.add_child(sc)
 	sc.global_position = spawn.global_position
 	sc.match_card_stats(card) # Currently doesn't do anything
+	sc.button.pressed.connect(buy_card.bind(sc, card, true))
 	_arrange_cards()
+	get_tree().create_timer(1).timeout.connect(_end_card_arrangement)
 
-func _arrange_cards():
+func buy_card(sc: AnimalCardHandler, card: AnimalCard, player_1: bool) -> void:
+	if player_1 and hand.get_plants_available() >= card.plant_cost and hand.get_meat_available() >= card.meat_cost:
+		cards.remove_child(sc)
+		encounters_row.remove_child(card)
+		animals_handler.add_card(sc)
+		animals_row.add_child(card)
+
+func _end_card_arrangement() -> void:
+	for card: AnimalCardHandler in cards.get_children():
+		card.enable_click()
+
+func _arrange_cards() -> void:
 	var start_x = left_bound.global_position.x
 
 	for i in range(cards.get_child_count()):
 		var target_x = start_x + i * card_spacing
-		var card = cards.get_child(i)
+		var card: AnimalCardHandler = cards.get_child(i)
 		card.move_to(Vector2(target_x, card.global_position.y))  # smooth motion handled by card itself
