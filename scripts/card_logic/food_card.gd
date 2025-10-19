@@ -5,3 +5,5 @@ class_name FoodCard
 @export_subgroup("Stats")
 @export var plant_amount: int = 1
 @export var meat_amount: int = 0
+
+var selected: bool = false

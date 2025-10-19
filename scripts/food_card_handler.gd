@@ -5,6 +5,13 @@ class_name FoodCardHandler
 @export var food_label: Label
 @export var plant_sprite: Sprite2D
 @export var meat_sprite: Sprite2D
+@export var selected_rect: ColorRect
+
+var selected: bool = false
+var card_ref: FoodCard
+
+func _ready() -> void:
+    button.pressed.connect(click)
 
 func match_card_stats(card: FoodCard):
     if card.plant_amount > 0:
@@ -17,3 +24,12 @@ func match_card_stats(card: FoodCard):
         food_label.text = str(card.meat_amount)
         plant_sprite.hide()
         meat_sprite.show()
+
+func click() -> void:
+    if selected:
+        selected = false
+        selected_rect.hide()
+    else:
+        selected = true
+        selected_rect.show()
+    card_ref.selected = selected

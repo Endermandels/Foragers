@@ -442,10 +442,11 @@ material = SubResource("ShaderMaterial_qe6os")
 offset_right = 640.0
 offset_bottom = 480.0
 
-[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("game_logic", "blur_rect", "left_bound", "right_bound", "hidden_y", "cards")]
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("game_logic", "hand", "blur_rect", "left_bound", "right_bound", "hidden_y", "cards")]
 position = Vector2(0, 256)
 script = ExtResource("7_jk5ww")
 game_logic = NodePath("../GameLogic")
+hand = NodePath("../GameLogic/P1Hand")
 blur_rect = NodePath("../BlurRect")
 left_bound = NodePath("LeftBound")
 right_bound = NodePath("RightBound")

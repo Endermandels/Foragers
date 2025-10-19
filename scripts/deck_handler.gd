@@ -26,6 +26,7 @@ func spawn_card(card: Card) -> CardHandler:
 
     if card is FoodCard:
         sc = FOOD_CARD.instantiate()
+        sc.card_ref = card
     elif card is AnimalCard:
         sc = ANIMAL_CARD.instantiate() # Not used currently
     else:

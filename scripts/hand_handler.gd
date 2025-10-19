@@ -7,6 +7,7 @@ class_name HandHandler
 
 @export_group("External Nodes")
 @export var game_logic: GameLogic
+@export var hand: Hand
 @export var blur_rect: ColorRect
 
 @export_group("Internal Nodes")
@@ -17,6 +18,9 @@ class_name HandHandler
 
 var interactible = false
 var hand_shown = false
+
+func _ready() -> void:
+    hand.consume_selected_food.connect(_consume_selected_foods)
 
 func _unhandled_input(event: InputEvent) -> void:
     if hand_shown and interactible and event.is_action("wheel_down"):
@@ -38,10 +42,14 @@ func _arrange_cards():
         total_width = (cards.get_child_count() - 1) * (card_spacing - shift)
         end_x = start_x + total_width
 
+    var y_pos = global_position.y
+    if not hand_shown:
+        y_pos = hidden_y.global_position.y
+
     for i in range(cards.get_child_count()):
         var target_x = start_x + i * (card_spacing - shift)
         var card = cards.get_child(i)
-        card.move_to(Vector2(target_x, position.y))  # smooth motion handled by card itself
+        card.move_to(Vector2(target_x, y_pos))  # smooth motion handled by card itself
 
 func add_card_to_hand(card: CardHandler) -> void:
     if card == null:
@@ -53,6 +61,7 @@ func add_card_to_hand(card: CardHandler) -> void:
 
 func fade_in_hand() -> void:
     interactible = false
+    hand_shown = true
     blur_rect.show()
     get_tree().create_tween().tween_method(_set_blur_radius, 0.0, 1.0, 0.2).finished.connect(_fade_in_finished)
     for card: CardHandler in cards.get_children():
@@ -63,15 +72,23 @@ func _set_blur_radius(value: float) -> void:
 
 func fade_out_hand() -> void:
     interactible = false
+    hand_shown = false
     get_tree().create_tween().tween_method(_set_blur_radius, 1.0, 0.0, 0.2).finished.connect(_fade_out_finished)
     for card: CardHandler in cards.get_children():
+        card.disable_click()
         card.move_to(Vector2(card.global_position.x, hidden_y.global_position.y))
 
 func _fade_in_finished() -> void:
     interactible = true
-    hand_shown = true
+    for card: CardHandler in cards.get_children():
+        card.enable_click()
 
 func _fade_out_finished() -> void:
     blur_rect.hide()
     interactible = true
-    hand_shown = false
+
+func _consume_selected_foods() -> void:
+    for food: FoodCardHandler in cards.get_children():
+        if food.selected:
+            food.queue_free()
+    get_tree().create_timer(0.1).timeout.connect(_arrange_cards)
