@@ -41,6 +41,7 @@ func spawn_card() -> void:
     
     encounters_row.add_child(card)
 
+    card.sc_ref = sc
     cards.add_child(sc)
     sc.global_position = spawn.global_position
     sc.match_card_stats(card) # Currently doesn't do anything
@@ -55,6 +56,9 @@ func buy_card(sc: AnimalCardHandler, card: AnimalCard, player_1: bool) -> void:
         encounters_row.remove_child(card)
         animals_handler.add_card(sc)
         animals_row.add_child(card)
+    elif not player_1:
+        cards.remove_child(sc)
+        encounters_row.remove_child(card)
     fill_row()
 
 func _end_card_arrangement() -> void:

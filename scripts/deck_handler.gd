@@ -47,15 +47,15 @@ func draw_card() -> void:
     var card = deck.draw_card()
 
     if card == null:
-        print("Empty Deck")
+        print("P1 Empty Deck")
         disable_click()
         return
     elif card is FoodCard:
-        print("Drew Food Card")
+        print("P1 Drew Food Card")
     elif card is AnimalCard:
-        print("Drew Animal Card")
+        print("P1 Drew Animal Card")
     else:
-        push_warning("Drew Unknown Card")
+        push_warning("P1 Drew Unknown Card")
         return
     
     hand.add_child(card)

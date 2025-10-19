@@ -284,11 +284,17 @@ script = ExtResource("6_c883u")
 [node name="P2Animals" type="Node" parent="GameLogic"]
 script = ExtResource("6_c883u")
 
-[node name="P2AI" type="Node" parent="GameLogic" node_paths=PackedStringArray("game_logic", "deck_sprite", "hand_location")]
+[node name="P2AI" type="Node" parent="GameLogic" node_paths=PackedStringArray("game_logic", "deck_sprite", "hand_location", "deck", "hand", "animals_row", "encounters_row", "encounters_row_handler", "animals_handler")]
 script = ExtResource("7_r6q1w")
 game_logic = NodePath("..")
 deck_sprite = NodePath("../../Table/P2Deck/P2DeckSprite")
 hand_location = NodePath("../../Table/P2Hand")
+deck = NodePath("../P2Deck")
+hand = NodePath("../P2Hand")
+animals_row = NodePath("../P2Animals")
+encounters_row = NodePath("../EncountersRow")
+encounters_row_handler = NodePath("../../Table/EncountersRow")
+animals_handler = NodePath("../../Table/P2Animals")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
@@ -379,12 +385,7 @@ offset_right = 632.0
 offset_bottom = 472.0
 mouse_default_cursor_shape = 2
 
-[node name="P2Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "deck_sprite")]
-script = ExtResource("5_buma0")
-game_logic = NodePath("../../GameLogic")
-deck = NodePath("../../GameLogic/P2Deck")
-hand = NodePath("../../GameLogic/P2Hand")
-deck_sprite = NodePath("P2DeckSprite")
+[node name="P2Deck" type="Node2D" parent="Table"]
 
 [node name="P2DeckSprite" parent="Table/P2Deck" instance=ExtResource("2_qlt8m")]
 position = Vector2(152, 72)

@@ -20,6 +20,13 @@ func get_meat_available() -> int:
             meat += food.meat_amount
     return meat
 
+func n_selected() -> int:
+    var n_selected = 0
+    for food: FoodCard in get_children():
+        if food.selected:
+            n_selected += 1
+    return n_selected
+
 func can_purchase(card: AnimalCard) -> bool:
     return get_plants_available() >= card.plant_cost and get_meat_available() >= card.meat_cost
 
