@@ -11,6 +11,16 @@ enum GameState {
 @export var is_player_1_turn: bool = true
 @export var n_beginning_cards_p1: int = 3
 @export var n_beginning_cards_p2: int = 3
+@export var p1_hp: int = 20
+@export var p2_hp: int = 20
+
+@export_group("External Nodes")
+@export var p1_hp_label: Label
+@export var p2_hp_label: Label
+
+@export_group("Internal Nodes")
+@export var p1_animals: AnimalsRow
+@export var p2_animals: AnimalsRow
 
 var turn: int = 0
 var state: GameState = GameState.DRAW
@@ -28,6 +38,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _ready() -> void:
     get_tree().create_timer(0.2).timeout.connect(draw_phase)
+    p1_hp_label.text = str(p1_hp)
+    p2_hp_label.text = str(p2_hp)
 
 func draw_phase() -> void:
     print("Draw state entered")
@@ -51,7 +63,15 @@ func attack_phase() -> void:
     state = GameState.ATTACK
     attack_phase_entered.emit()
     
-    
+    if is_player_1_turn:
+        for animal: AnimalCard in p1_animals.get_children():
+            p2_hp -= animal.atk
+            # TODO: Add attacking animals instead of player directly
+        p2_hp_label.text = str(p2_hp)
+    else:
+        for animal: AnimalCard in p2_animals.get_children():
+            p1_hp -= animal.atk
+        p1_hp_label.text = str(p1_hp)
 
 func progress_phase() -> void:
     if state == GameState.ATTACK:

@@ -22,9 +22,13 @@ shader_parameter/radius = 0.0
 
 [node name="Game" type="Node2D"]
 
-[node name="GameLogic" type="Node" parent="."]
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "p1_animals", "p2_animals")]
 script = ExtResource("2_xmjd3")
 n_beginning_cards_p1 = 20
+p1_hp_label = NodePath("../Table/P1HP/Label")
+p2_hp_label = NodePath("../Table/P2HP/Label")
+p1_animals = NodePath("P1Animals")
+p2_animals = NodePath("P2Animals")
 
 [node name="P1Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
