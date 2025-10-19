@@ -18,6 +18,10 @@ var state: GameState = GameState.DRAW
 signal draw_cards(n: int, player_1: bool) ## Draw n cards
 signal show_encounters_row()
 
+func _unhandled_key_input(event: InputEvent) -> void:
+    if event.is_action_pressed("ui_cancel"):
+        get_tree().quit()
+
 func _ready() -> void:
     get_tree().create_timer(0.2).timeout.connect(draw_phase)
 

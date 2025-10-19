@@ -398,33 +398,41 @@ position = Vector2(704, 0)
 
 [node name="Cards" type="Node2D" parent="Table/EncountersRow"]
 
-[node name="P1Animals" type="Node2D" parent="Table" node_paths=PackedStringArray("left_bound", "right_bound", "cards")]
-position = Vector2(0, 408)
+[node name="P1Animals" type="Node2D" parent="Table" node_paths=PackedStringArray("left_bound", "right_bound", "y_value", "cards")]
+position = Vector2(0, 256)
 script = ExtResource("9_d3fxq")
 left_bound = NodePath("LeftBound")
 right_bound = NodePath("RightBound")
+y_value = NodePath("YValue")
 cards = NodePath("Cards")
 
 [node name="RightBound" type="Node2D" parent="Table/P1Animals"]
-position = Vector2(504, 0)
+position = Vector2(504, 152)
 
 [node name="LeftBound" type="Node2D" parent="Table/P1Animals"]
-position = Vector2(152, 0)
+position = Vector2(152, 152)
+
+[node name="YValue" type="Node2D" parent="Table/P1Animals"]
+position = Vector2(0, 152)
 
 [node name="Cards" type="Node2D" parent="Table/P1Animals"]
 
-[node name="P2Animals" type="Node2D" parent="Table" node_paths=PackedStringArray("left_bound", "right_bound", "cards")]
-position = Vector2(0, 72)
+[node name="P2Animals" type="Node2D" parent="Table" node_paths=PackedStringArray("left_bound", "right_bound", "y_value", "cards")]
+position = Vector2(0, 256)
 script = ExtResource("9_d3fxq")
 left_bound = NodePath("LeftBound")
 right_bound = NodePath("RightBound")
+y_value = NodePath("YValue")
 cards = NodePath("Cards")
 
 [node name="RightBound" type="Node2D" parent="Table/P2Animals"]
-position = Vector2(592, 0)
+position = Vector2(592, -184)
 
 [node name="LeftBound" type="Node2D" parent="Table/P2Animals"]
-position = Vector2(240, 0)
+position = Vector2(240, -184)
+
+[node name="YValue" type="Node2D" parent="Table/P2Animals"]
+position = Vector2(0, -184)
 
 [node name="Cards" type="Node2D" parent="Table/P2Animals"]
 
