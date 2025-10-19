@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=12 format=3 uid="uid://ddouxdy6etpfm"]
 
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
 [ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://scripts/card_logic/hand.gd" id="4_5oecf"]
 [ext_resource type="Script" path="res://scripts/card_logic/food_card.gd" id="4_egx6h"]
 [ext_resource type="Script" path="res://scripts/deck_handler.gd" id="5_buma0"]
+[ext_resource type="Script" path="res://scripts/card_logic/encounters_row.gd" id="5_giul1"]
 [ext_resource type="Script" path="res://scripts/hand_handler.gd" id="7_jk5ww"]
+[ext_resource type="Script" path="res://scripts/encounters_row_handler.gd" id="8_c7onh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qe6os"]
 shader = ExtResource("1_h1wkj")
@@ -142,6 +144,9 @@ is_player_1 = true
 [node name="P2Hand" type="Node" parent="GameLogic"]
 script = ExtResource("4_5oecf")
 
+[node name="EncountersRow" type="Node" parent="GameLogic"]
+script = ExtResource("5_giul1")
+
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
 offset_bottom = 480.0
@@ -275,6 +280,24 @@ position = Vector2(152, 72)
 
 [node name="FaceDown" parent="Table/P2Deck/P2DeckSprite" index="1"]
 visible = true
+
+[node name="EncountersRow" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "encounters_row", "left_bound", "spawn", "cards")]
+position = Vector2(0, 256)
+script = ExtResource("8_c7onh")
+card_spacing = 90.0
+game_logic = NodePath("../../GameLogic")
+encounters_row = NodePath("../../GameLogic/EncountersRow")
+left_bound = NodePath("LeftBound")
+spawn = NodePath("Spawn")
+cards = NodePath("Cards")
+
+[node name="LeftBound" type="Node2D" parent="Table/EncountersRow"]
+position = Vector2(152, 0)
+
+[node name="Spawn" type="Node2D" parent="Table/EncountersRow"]
+position = Vector2(704, 0)
+
+[node name="Cards" type="Node2D" parent="Table/EncountersRow"]
 
 [node name="BlurRect" type="ColorRect" parent="."]
 visible = false

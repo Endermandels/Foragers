@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cug56xeadjtxt"]
+
+[ext_resource type="Script" path="res://scripts/card_logic/animal_card.gd" id="1_q1b7d"]
+
+[node name="FoxCardStats" type="Node"]
+script = ExtResource("1_q1b7d")
+hp = 2
+atk = 2
+plant_cost = 0
+meat_cost = 2

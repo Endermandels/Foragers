@@ -16,7 +16,7 @@ var turn: int = 0
 var state: GameState = GameState.DRAW
 
 signal draw_cards(n: int, player_1: bool) ## Draw n cards
-signal show_trade_row()
+signal show_encounters_row()
 
 func _ready() -> void:
     get_tree().create_timer(0.2).timeout.connect(draw_phase)
@@ -34,7 +34,7 @@ func draw_phase() -> void:
 func buy_phase() -> void:
     print("Buy state entered")
     state = GameState.BUY
-    show_trade_row.emit()
+    show_encounters_row.emit()
 
 func attack_phase() -> void:
     print("Attack state entered")

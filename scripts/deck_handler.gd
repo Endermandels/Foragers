@@ -27,7 +27,7 @@ func spawn_card(card: Card) -> CardHandler:
     if card is FoodCard:
         sc = FOOD_CARD.instantiate()
     elif card is AnimalCard:
-        sc = ANIMAL_CARD.instantiate()
+        sc = ANIMAL_CARD.instantiate() # Not used currently
     else:
         push_warning("Unknown card type for spawn")
         return sc
