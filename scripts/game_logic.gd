@@ -18,6 +18,10 @@ var state: GameState = GameState.DRAW
 signal draw_cards(n: int, player_1: bool) ## Draw n cards
 signal show_encounters_row()
 
+signal draw_phase_entered
+signal buy_phase_entered
+signal attack_phase_entered
+
 func _unhandled_key_input(event: InputEvent) -> void:
     if event.is_action_pressed("ui_cancel"):
         get_tree().quit()
@@ -28,6 +32,7 @@ func _ready() -> void:
 func draw_phase() -> void:
     print("Draw state entered")
     state = GameState.DRAW
+    draw_phase_entered.emit()
 
     if turn == 0 and is_player_1_turn:
         draw_cards.emit(n_beginning_cards_p1, true)
@@ -39,10 +44,12 @@ func buy_phase() -> void:
     print("Buy state entered")
     state = GameState.BUY
     show_encounters_row.emit()
+    buy_phase_entered.emit()
 
 func attack_phase() -> void:
     print("Attack state entered")
     state = GameState.ATTACK
+    attack_phase_entered.emit()
     
     
 

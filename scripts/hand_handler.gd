@@ -25,7 +25,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if hand_shown and interactible and event.is_action("wheel_down"):
         fade_out_hand()
-        if game_logic.state == GameLogic.GameState.DRAW:
+        if game_logic.state == GameLogic.GameState.DRAW and game_logic.is_player_1_turn:
             game_logic.progress_phase()
     if not hand_shown and interactible and event.is_action("wheel_up"):
         fade_in_hand()

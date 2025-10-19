@@ -55,6 +55,7 @@ func buy_card(sc: AnimalCardHandler, card: AnimalCard, player_1: bool) -> void:
         encounters_row.remove_child(card)
         animals_handler.add_card(sc)
         animals_row.add_child(card)
+    fill_row()
 
 func _end_card_arrangement() -> void:
     for card: AnimalCardHandler in cards.get_children():

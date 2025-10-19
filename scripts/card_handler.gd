@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func match_card_stats(card) -> void:
     # Updates card visuals to match the card stats
-    pass        
+    pass
 
 func move_to(pos: Vector2) -> void:
     target_pos = pos
@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 
 func enable_click() -> void:
     if button:
-        print("enable")
         button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
         button.disabled = false
 
