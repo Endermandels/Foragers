@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=17 format=3 uid="uid://ddouxdy6etpfm"]
 
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
 [ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/card_logic/encounters_row.gd" id="5_giul1"]
 [ext_resource type="Script" path="res://scripts/card_logic/animals_row.gd" id="6_c883u"]
 [ext_resource type="Script" path="res://scripts/hand_handler.gd" id="7_jk5ww"]
+[ext_resource type="Script" path="res://scripts/p_2ai.gd" id="7_r6q1w"]
 [ext_resource type="Script" path="res://scripts/encounters_row_handler.gd" id="8_c7onh"]
 [ext_resource type="Script" path="res://scripts/animals_handler.gd" id="9_d3fxq"]
 [ext_resource type="Script" path="res://scripts/attack_button.gd" id="11_8tc6g"]
@@ -283,6 +284,12 @@ script = ExtResource("6_c883u")
 [node name="P2Animals" type="Node" parent="GameLogic"]
 script = ExtResource("6_c883u")
 
+[node name="P2AI" type="Node" parent="GameLogic" node_paths=PackedStringArray("game_logic", "deck_sprite", "hand_location")]
+script = ExtResource("7_r6q1w")
+game_logic = NodePath("..")
+deck_sprite = NodePath("../../Table/P2Deck/P2DeckSprite")
+hand_location = NodePath("../../Table/P2Hand")
+
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
 offset_bottom = 480.0
@@ -455,6 +462,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kuimb")
 text = "ATTACK!"
 script = ExtResource("11_8tc6g")
 game_logic = NodePath("../../GameLogic")
+
+[node name="P2Hand" type="Node2D" parent="Table"]
+position = Vector2(320, -88)
 
 [node name="BlurRect" type="ColorRect" parent="."]
 visible = false

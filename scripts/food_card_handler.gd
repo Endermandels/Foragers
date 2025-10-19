@@ -6,6 +6,7 @@ class_name FoodCardHandler
 @export var plant_sprite: Sprite2D
 @export var meat_sprite: Sprite2D
 @export var selected_rect: ColorRect
+@export var hidden_view: Node2D
 
 var selected: bool = false
 var card_ref: FoodCard

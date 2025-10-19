@@ -5,13 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://bkn1eoe34qnjh" path="res://assets/images/plant-icon.png" id="2_yxgsy"]
 [ext_resource type="Texture2D" uid="uid://dg78luprubn11" path="res://assets/images/meat-icon.png" id="4_klmgi"]
 
-[node name="FoodCard" type="Node2D" node_paths=PackedStringArray("food_label", "plant_sprite", "meat_sprite", "selected_rect", "button")]
+[node name="FoodCard" type="Node2D" node_paths=PackedStringArray("food_label", "plant_sprite", "meat_sprite", "selected_rect", "hidden_view", "button")]
 scale = Vector2(2, 2)
 script = ExtResource("1_dcb3k")
 food_label = NodePath("FaceUp/FoodLabel")
 plant_sprite = NodePath("FaceUp/PlantSprite")
 meat_sprite = NodePath("FaceUp/MeatSprite")
 selected_rect = NodePath("FaceUp/SelectedBorder")
+hidden_view = NodePath("FaceDown")
 button = NodePath("FaceUp/TextureButton")
 
 [node name="FaceUp" type="Node2D" parent="."]

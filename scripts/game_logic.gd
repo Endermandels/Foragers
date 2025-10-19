@@ -72,6 +72,8 @@ func attack_phase() -> void:
         for animal: AnimalCard in p2_animals.get_children():
             p1_hp -= animal.atk
         p1_hp_label.text = str(p1_hp)
+    
+    get_tree().create_timer(1).timeout.connect(progress_phase)
 
 func progress_phase() -> void:
     if state == GameState.ATTACK:
