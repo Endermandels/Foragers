@@ -24,61 +24,61 @@ is_player_1 = true
 
 [node name="FoodCard" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard2" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard3" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard4" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard5" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard6" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard7" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard8" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard9" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
 [node name="FoodCard10" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 is_player_1 = true
 
@@ -87,52 +87,52 @@ script = ExtResource("3_txcl7")
 
 [node name="FoodCard" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard2" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard3" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard4" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard5" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard6" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard7" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard8" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard9" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="FoodCard10" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 2
+plant_amount = 0
 meat_amount = 2
 
 [node name="P1Hand" type="Node" parent="GameLogic"]
@@ -148,12 +148,6 @@ offset_bottom = 480.0
 color = Color(0.222345, 0.61, 0.0427, 1)
 
 [node name="Table" type="Node2D" parent="."]
-
-[node name="P2DeckSprite" parent="Table" instance=ExtResource("2_qlt8m")]
-position = Vector2(152, 72)
-
-[node name="FaceDown" parent="Table/P2DeckSprite" index="1"]
-visible = true
 
 [node name="CardSlots" type="Node2D" parent="Table"]
 
@@ -246,8 +240,10 @@ theme_override_font_sizes/font_size = 72
 text = "20"
 metadata/_edit_use_anchors_ = true
 
-[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("deck", "hand", "deck_button", "deck_sprite", "hand_handler")]
+[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "deck_button", "deck_sprite", "hand_handler")]
 script = ExtResource("5_buma0")
+is_player_1 = true
+game_logic = NodePath("../../GameLogic")
 deck = NodePath("../../GameLogic/P1Deck")
 hand = NodePath("../../GameLogic/P1Hand")
 deck_button = NodePath("TextureButton")
@@ -267,15 +263,29 @@ offset_right = 632.0
 offset_bottom = 472.0
 mouse_default_cursor_shape = 2
 
+[node name="P2Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "deck_sprite")]
+script = ExtResource("5_buma0")
+game_logic = NodePath("../../GameLogic")
+deck = NodePath("../../GameLogic/P2Deck")
+hand = NodePath("../../GameLogic/P2Hand")
+deck_sprite = NodePath("P2DeckSprite")
+
+[node name="P2DeckSprite" parent="Table/P2Deck" instance=ExtResource("2_qlt8m")]
+position = Vector2(152, 72)
+
+[node name="FaceDown" parent="Table/P2Deck/P2DeckSprite" index="1"]
+visible = true
+
 [node name="BlurRect" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_qe6os")
 offset_right = 640.0
 offset_bottom = 480.0
 
-[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("blur_rect", "left_bound", "right_bound", "hidden_y", "cards")]
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("game_logic", "blur_rect", "left_bound", "right_bound", "hidden_y", "cards")]
 position = Vector2(0, 256)
 script = ExtResource("7_jk5ww")
+game_logic = NodePath("../GameLogic")
 blur_rect = NodePath("../BlurRect")
 left_bound = NodePath("LeftBound")
 right_bound = NodePath("RightBound")
@@ -293,5 +303,5 @@ position = Vector2(0, 320)
 
 [node name="Cards" type="Node2D" parent="Hand"]
 
-[editable path="Table/P2DeckSprite"]
 [editable path="Table/P1Deck/P1DeckSprite"]
+[editable path="Table/P2Deck/P2DeckSprite"]
