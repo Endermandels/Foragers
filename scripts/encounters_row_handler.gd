@@ -24,6 +24,8 @@ const FOX_CARD_STATS = preload("res://scenes/animal_cards/fox_card_stats.tscn")
 
 func _ready() -> void:
     game_logic.show_encounters_row.connect(fill_row)
+    game_logic.attack_phase_entered.connect(disable_cards)
+    game_logic.buy_phase_entered.connect(enable_cards)
 
 func fill_row() -> void:
     while cards.get_child_count() < n_cards_in_row:
@@ -47,7 +49,7 @@ func spawn_card() -> void:
     sc.match_card_stats(card) # Currently doesn't do anything
     sc.button.pressed.connect(buy_card.bind(sc, card, true))
     _arrange_cards()
-    get_tree().create_timer(1).timeout.connect(_end_card_arrangement)
+    get_tree().create_timer(1).timeout.connect(enable_cards)
 
 func buy_card(sc: AnimalCardHandler, card: AnimalCard, player_1: bool) -> void:
     if player_1 and hand.can_purchase(card):
@@ -61,9 +63,14 @@ func buy_card(sc: AnimalCardHandler, card: AnimalCard, player_1: bool) -> void:
         encounters_row.remove_child(card)
     fill_row()
 
-func _end_card_arrangement() -> void:
+func enable_cards() -> void:
+    if game_logic.is_player_1_turn:
+        for card: AnimalCardHandler in cards.get_children():
+                card.enable_click()
+
+func disable_cards() -> void:
     for card: AnimalCardHandler in cards.get_children():
-        card.enable_click()
+            card.disable_click()
 
 func _arrange_cards() -> void:
     var start_x = left_bound.global_position.x
