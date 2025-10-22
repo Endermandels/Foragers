@@ -4,7 +4,8 @@ class_name GameLogic
 enum GameState {
     DRAW,
     BUY,
-    ATTACK
+    ATTACK,
+    END
 }
 
 @export_group("Settings")
@@ -17,6 +18,7 @@ enum GameState {
 @export_group("External Nodes")
 @export var p1_hp_label: Label
 @export var p2_hp_label: Label
+@export var end_state_handler: EndStateHandler
 
 @export_group("Internal Nodes")
 @export var p1_animals: AnimalsRow
@@ -65,13 +67,21 @@ func attack_phase() -> void:
     
     if is_player_1_turn:
         for animal: AnimalCard in p1_animals.get_children():
-            p2_hp -= animal.atk
+            p2_hp = clampi(p2_hp - animal.atk, 0, p2_hp)
             # TODO: Add attacking animals instead of player directly
         p2_hp_label.text = str(p2_hp)
+        if p2_hp == 0:
+            end_state_handler.handle_win(true)
+            state = GameState.END
+            return
     else:
         for animal: AnimalCard in p2_animals.get_children():
-            p1_hp -= animal.atk
+            p1_hp = clampi(p1_hp - animal.atk, 0, p1_hp)
         p1_hp_label.text = str(p1_hp)
+        if p1_hp == 0:
+            end_state_handler.handle_win(false)
+            state = GameState.END
+            return
     
     get_tree().create_timer(1).timeout.connect(progress_phase)
 
