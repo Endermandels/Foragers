@@ -252,7 +252,7 @@ script = ExtResource("6_c883u")
 [node name="P2Animals" type="Node" parent="GameLogic"]
 script = ExtResource("6_c883u")
 
-[node name="P2AI" type="Node" parent="GameLogic" node_paths=PackedStringArray("game_logic", "deck_sprite", "hand_location", "deck", "hand", "animals_row", "encounters_row", "encounters_row_handler", "animals_handler")]
+[node name="P2AI" type="Node" parent="GameLogic" node_paths=PackedStringArray("game_logic", "deck_sprite", "hand_location", "deck", "hand", "animals_row", "encounters_row", "encounters_row_handler", "animals_handler", "deck_count_label")]
 script = ExtResource("7_r6q1w")
 game_logic = NodePath("..")
 deck_sprite = NodePath("../../Table/P2Deck/P2DeckSprite")
@@ -263,6 +263,7 @@ animals_row = NodePath("../P2Animals")
 encounters_row = NodePath("../EncountersRow")
 encounters_row_handler = NodePath("../../Table/EncountersRow")
 animals_handler = NodePath("../../Table/P2Animals")
+deck_count_label = NodePath("../../Table/P2Deck/P2DeckCount")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
@@ -330,7 +331,7 @@ theme_override_font_sizes/font_size = 72
 text = "20"
 metadata/_edit_use_anchors_ = true
 
-[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "deck_button", "deck_sprite", "hand_handler")]
+[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "deck_button", "deck_sprite", "hand_handler", "deck_count_label")]
 script = ExtResource("5_buma0")
 is_player_1 = true
 game_logic = NodePath("../../GameLogic")
@@ -339,6 +340,7 @@ hand = NodePath("../../GameLogic/P1Hand")
 deck_button = NodePath("TextureButton")
 deck_sprite = NodePath("P1DeckSprite")
 hand_handler = NodePath("../../Hand")
+deck_count_label = NodePath("P1DeckCount")
 
 [node name="P1DeckSprite" parent="Table/P1Deck" instance=ExtResource("2_qlt8m")]
 position = Vector2(592, 408)
@@ -353,6 +355,14 @@ offset_right = 632.0
 offset_bottom = 472.0
 mouse_default_cursor_shape = 2
 
+[node name="P1DeckCount" type="Label" parent="Table/P1Deck"]
+offset_left = 568.0
+offset_top = 376.0
+offset_right = 616.0
+offset_bottom = 427.0
+theme_override_font_sizes/font_size = 64
+text = "20"
+
 [node name="P2Deck" type="Node2D" parent="Table"]
 
 [node name="P2DeckSprite" parent="Table/P2Deck" instance=ExtResource("2_qlt8m")]
@@ -360,6 +370,14 @@ position = Vector2(152, 72)
 
 [node name="FaceDown" parent="Table/P2Deck/P2DeckSprite" index="1"]
 visible = true
+
+[node name="P2DeckCount" type="Label" parent="Table/P2Deck"]
+offset_left = 128.0
+offset_top = 40.0
+offset_right = 176.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 64
+text = "20"
 
 [node name="EncountersRow" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "hand", "encounters_row", "animals_handler", "animals_row", "left_bound", "spawn", "cards")]
 position = Vector2(0, 256)

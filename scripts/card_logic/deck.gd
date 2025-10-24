@@ -67,5 +67,8 @@ func draw_card() -> Card:
     remove_child(card)
     return card
 
+func remaining() -> int:
+    return cards.size()
+
 func is_empty() -> bool:
     return cards.size() == 0

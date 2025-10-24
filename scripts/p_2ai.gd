@@ -11,10 +11,12 @@ class_name P2AI
 @export var encounters_row: EncountersRow
 @export var encounters_row_handler: EncountersRowHandler
 @export var animals_handler: AnimalsHandler
+@export var deck_count_label: Label
 
 func _ready() -> void:
     game_logic.draw_cards.connect(draw_cards)
     game_logic.buy_phase_entered.connect(_buy_phase)
+    deck_count_label.text = str(deck.remaining())
 
 const FOOD_CARD = preload("res://scenes/food_card.tscn")
 
@@ -35,6 +37,7 @@ func draw_card() -> void:
     # Give the appearance of drawing the card
     _show_card_draw()
     var card = deck.draw_card()
+    deck_count_label.text = str(deck.remaining())
 
     if card == null:
         print("P2 Empty Deck")
