@@ -26,7 +26,6 @@ shader_parameter/radius = 0.0
 
 [node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "end_state_handler", "p1_animals", "p2_animals")]
 script = ExtResource("2_xmjd3")
-n_beginning_cards_p2 = 6
 p1_hp_label = NodePath("../Table/P1HP/Label")
 p2_hp_label = NodePath("../Table/P2HP/Label")
 end_state_handler = NodePath("../EndStateHandler")
@@ -36,238 +35,200 @@ p2_animals = NodePath("P2Animals")
 [node name="P1Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
 is_player_1 = true
+randomize_deck = true
 
 [node name="FoodCard" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard2" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard3" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard4" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard5" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard6" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard7" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard8" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard9" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard10" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard11" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard12" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard13" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard14" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard15" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard16" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard17" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard18" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard19" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard20" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard21" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard22" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard23" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard24" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard25" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard26" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard27" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard28" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard29" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="FoodCard30" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 is_player_1 = true
 
 [node name="P2Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
+randomize_deck = true
 
 [node name="FoodCard" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard2" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard3" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard4" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard5" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard6" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard7" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard8" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard9" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="FoodCard10" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-plant_amount = 0
 meat_amount = 1
 
 [node name="P1Hand" type="Node" parent="GameLogic"]
@@ -510,6 +471,7 @@ p1_lose = NodePath("P1Lose")
 
 [node name="ShadeRect" type="ColorRect" parent="EndStateHandler"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 1)

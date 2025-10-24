@@ -19,8 +19,10 @@ class_name EncountersRowHandler
 
 var interactible = false
 
-const FOX_CARD = preload("res://scenes/animal_cards/fox_card.tscn")
-const FOX_CARD_STATS = preload("res://scenes/animal_cards/fox_card_stats.tscn")
+const CARDS = [
+    [preload("res://scenes/animal_cards/fox_card.tscn"), preload("res://scenes/animal_cards/fox_card_stats.tscn")]
+    , [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn")]
+]
 
 func _ready() -> void:
     game_logic.show_encounters_row.connect(fill_row)
@@ -32,8 +34,8 @@ func fill_row() -> void:
         spawn_card()
 
 func get_animal_card() -> Array:
-    # var rnd = randi_range(0, 0)
-    return [FOX_CARD.instantiate(), FOX_CARD_STATS.instantiate()]
+    var card_arr = CARDS.pick_random()
+    return [card_arr[0].instantiate(), card_arr[1].instantiate()]
 
 func spawn_card() -> void:
     ## Spawn a random Animal card for the encounters row
