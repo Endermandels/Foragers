@@ -8,6 +8,7 @@ class_name DeckHandler
 @export var game_logic: GameLogic
 @export var deck: Deck
 @export var hand: Hand
+@export var animal_row: AnimalsRow
 @export var deck_button: TextureButton ## Leave blank for P2
 @export var deck_sprite: CardHandler
 @export var hand_handler: HandHandler ## Leave blank for P2
@@ -52,6 +53,11 @@ func draw_card() -> void:
 	if card == null:
 		print("P1 Empty Deck")
 		disable_click()
+		for animal: AnimalCard in animal_row.get_children():
+			if animal.atk > 0:
+				hand_handler.add_card_to_hand(null)
+				return
+		game_logic.end_game(false) # Player 1 loses on empty deck draw with no attacking animals
 		return
 	elif card is FoodCard:
 		print("P1 Drew Food Card")

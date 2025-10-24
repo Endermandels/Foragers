@@ -40,7 +40,7 @@ p2_animals = NodePath("P2Animals")
 [node name="P1Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
 is_player_1 = true
-randomize_deck = true
+deck_size = 4
 
 [node name="FoodCard" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
@@ -62,179 +62,25 @@ script = ExtResource("4_egx6h")
 meat_amount = 1
 is_player_1 = true
 
-[node name="FoodCard5" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard6" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard7" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard8" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard9" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard10" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard11" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard12" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard13" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard14" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard15" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard16" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard17" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard18" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard19" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard20" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard21" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard22" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard23" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard24" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard25" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard26" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard27" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard28" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard29" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
-[node name="FoodCard30" type="Node" parent="GameLogic/P1Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-is_player_1 = true
-
 [node name="P2Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
-randomize_deck = true
+deck_size = 4
 
 [node name="FoodCard" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-meat_amount = 1
+plant_amount = 1
 
 [node name="FoodCard2" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-meat_amount = 1
+plant_amount = 1
 
 [node name="FoodCard3" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-meat_amount = 1
+plant_amount = 1
 
 [node name="FoodCard4" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
-meat_amount = 1
-
-[node name="FoodCard5" type="Node" parent="GameLogic/P2Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-
-[node name="FoodCard6" type="Node" parent="GameLogic/P2Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-
-[node name="FoodCard7" type="Node" parent="GameLogic/P2Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-
-[node name="FoodCard8" type="Node" parent="GameLogic/P2Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-
-[node name="FoodCard9" type="Node" parent="GameLogic/P2Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
-
-[node name="FoodCard10" type="Node" parent="GameLogic/P2Deck"]
-script = ExtResource("4_egx6h")
-meat_amount = 1
+plant_amount = 1
 
 [node name="P1Hand" type="Node" parent="GameLogic"]
 script = ExtResource("4_5oecf")
@@ -331,12 +177,13 @@ theme_override_font_sizes/font_size = 72
 text = "20"
 metadata/_edit_use_anchors_ = true
 
-[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "deck_button", "deck_sprite", "hand_handler", "deck_count_label")]
+[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "animal_row", "deck_button", "deck_sprite", "hand_handler", "deck_count_label")]
 script = ExtResource("5_buma0")
 is_player_1 = true
 game_logic = NodePath("../../GameLogic")
 deck = NodePath("../../GameLogic/P1Deck")
 hand = NodePath("../../GameLogic/P1Hand")
+animal_row = NodePath("../../GameLogic/P1Animals")
 deck_button = NodePath("TextureButton")
 deck_sprite = NodePath("P1DeckSprite")
 hand_handler = NodePath("../../Hand")

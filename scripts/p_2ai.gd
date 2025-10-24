@@ -35,12 +35,12 @@ func draw_cards(n_cards: int, player_1: bool) -> void:
 
 func draw_card() -> void:
     # Give the appearance of drawing the card
-    _show_card_draw()
     var card = deck.draw_card()
     deck_count_label.text = str(deck.remaining())
 
     if card == null:
         print("P2 Empty Deck")
+        game_logic.progress_phase()
         return
     elif card is FoodCard:
         print("P2 Drew Food Card")
@@ -50,6 +50,7 @@ func draw_card() -> void:
         push_warning("P2 Drew Unknown Card")
         return
     
+    _show_card_draw()
     hand.add_child(card)
 
     if not game_logic.is_player_1_turn:

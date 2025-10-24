@@ -52,11 +52,11 @@ func _arrange_cards():
         card.move_to(Vector2(target_x, y_pos))  # smooth motion handled by card itself
 
 func add_card_to_hand(card: CardHandler) -> void:
+    fade_in_hand()
     if card == null:
         return
 
     cards.add_child(card)
-    fade_in_hand()
     _arrange_cards()
 
 func fade_in_hand() -> void:

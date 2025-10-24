@@ -78,8 +78,7 @@ func attack_phase() -> void:
 
         p2_hp_label.text = str(p2_hp)
         if p2_hp == 0:
-            end_state_handler.handle_win(true)
-            state = GameState.END
+            end_game(true)
             return
     else:
         for animal: AnimalCard in p2_animals.get_children():
@@ -94,11 +93,14 @@ func attack_phase() -> void:
 
         p1_hp_label.text = str(p1_hp)
         if p1_hp == 0:
-            end_state_handler.handle_win(false)
-            state = GameState.END
+            end_game(false)
             return
     
     get_tree().create_timer(1).timeout.connect(progress_phase)
+
+func end_game(p1_win: bool) -> void:
+    end_state_handler.handle_win(p1_win)
+    state = GameState.END
 
 func progress_phase() -> void:
     if state == GameState.ATTACK:
