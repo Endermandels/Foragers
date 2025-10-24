@@ -35,7 +35,19 @@ func fill_row() -> void:
         spawn_card()
 
 func get_animal_card() -> Array:
-    var card_arr = CARDS.pick_random()
+    var rnd: float = randf()
+    var card_arr
+
+    if rnd < 0.1:
+        # 10%
+        card_arr = CARDS[2]
+    elif rnd < 0.7:
+        # 60%
+        card_arr = CARDS[0]
+    else:
+        # 30%
+        card_arr = CARDS[1]
+
     return [card_arr[0].instantiate(), card_arr[1].instantiate()]
 
 func spawn_card() -> void:
