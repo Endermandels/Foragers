@@ -365,7 +365,6 @@ visible = true
 position = Vector2(0, 256)
 script = ExtResource("8_c7onh")
 card_spacing = 90.0
-n_cards_in_row = null
 game_logic = NodePath("../../GameLogic")
 hand = NodePath("../../GameLogic/P1Hand")
 encounters_row = NodePath("../../GameLogic/EncountersRow")

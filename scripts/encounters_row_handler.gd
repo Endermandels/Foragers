@@ -22,6 +22,7 @@ var interactible = false
 const CARDS = [
     [preload("res://scenes/animal_cards/fox_card.tscn"), preload("res://scenes/animal_cards/fox_card_stats.tscn")]
     , [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn")]
+    , [preload("res://scenes/animal_cards/porcupine_card.tscn"), preload("res://scenes/animal_cards/porcupine_card_stats.tscn")]
 ]
 
 func _ready() -> void:

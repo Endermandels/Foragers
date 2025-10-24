@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnxpe0s6ksm40"]
+
+[ext_resource type="Script" path="res://scripts/card_logic/animal_card.gd" id="1_2hm57"]
+
+[node name="SquirrelCardStats" type="Node"]
+script = ExtResource("1_2hm57")
+hp = 5
+atk = 2
+plant_cost = 6
