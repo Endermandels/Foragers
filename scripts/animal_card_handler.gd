@@ -9,6 +9,8 @@ class_name AnimalCardHandler
 const PLANT_TEXTURE = preload("res://assets/images/plant-icon.png")
 const MEAT_TEXTURE = preload("res://assets/images/meat-icon.png")
 
+signal dead
+
 func match_card_stats(card: AnimalCard) -> void:
     hp_label.text = str(card.hp)
     atk_label.text = str(card.atk)
@@ -25,3 +27,7 @@ func match_card_stats(card: AnimalCard) -> void:
                 break
             food_sprites[i].texture = MEAT_TEXTURE
             food_sprites[i].show()
+
+func die() -> void:
+    dead.emit()
+    queue_free()

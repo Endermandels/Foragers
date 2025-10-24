@@ -67,11 +67,15 @@ func attack_phase() -> void:
     
     if is_player_1_turn:
         for animal: AnimalCard in p1_animals.get_children():
-            # var animals: Array[AnimalCard] = p2_animals.get_children()
-            # if animals.size() > 0:
-            #     animals[0].
-            p2_hp = clampi(p2_hp - animal.atk, 0, p2_hp)
-            # TODO: Add attacking animals instead of player directly
+            var attacked = false
+            for p2_animal: AnimalCard in p2_animals.get_children():
+                if p2_animal.hp > 0:
+                    p2_animal.take_damage(animal.atk)
+                    attacked = true
+                    break
+            if not attacked:
+                p2_hp = clampi(p2_hp - animal.atk, 0, p2_hp)
+
         p2_hp_label.text = str(p2_hp)
         if p2_hp == 0:
             end_state_handler.handle_win(true)
@@ -79,7 +83,15 @@ func attack_phase() -> void:
             return
     else:
         for animal: AnimalCard in p2_animals.get_children():
-            p1_hp = clampi(p1_hp - animal.atk, 0, p1_hp)
+            var attacked = false
+            for p1_animal: AnimalCard in p1_animals.get_children():
+                if p1_animal.hp > 0:
+                    p1_animal.take_damage(animal.atk)
+                    attacked = true
+                    break
+            if not attacked:
+                p1_hp = clampi(p1_hp - animal.atk, 0, p1_hp)
+
         p1_hp_label.text = str(p1_hp)
         if p1_hp == 0:
             end_state_handler.handle_win(false)
