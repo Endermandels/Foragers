@@ -26,6 +26,11 @@ shader_parameter/radius = 0.0
 
 [node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "end_state_handler", "p1_animals", "p2_animals")]
 script = ExtResource("2_xmjd3")
+is_player_1_turn = null
+n_beginning_cards_p1 = null
+n_beginning_cards_p2 = null
+p1_hp = null
+p2_hp = null
 p1_hp_label = NodePath("../Table/P1HP/Label")
 p2_hp_label = NodePath("../Table/P2HP/Label")
 end_state_handler = NodePath("../EndStateHandler")
@@ -360,6 +365,7 @@ visible = true
 position = Vector2(0, 256)
 script = ExtResource("8_c7onh")
 card_spacing = 90.0
+n_cards_in_row = null
 game_logic = NodePath("../../GameLogic")
 hand = NodePath("../../GameLogic/P1Hand")
 encounters_row = NodePath("../../GameLogic/EncountersRow")

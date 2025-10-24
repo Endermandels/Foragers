@@ -45,9 +45,12 @@ _data = {
 "idle": SubResource("Animation_bc75o")
 }
 
-[node name="SquirrelCard" type="Node2D" node_paths=PackedStringArray("button")]
+[node name="SquirrelCard" type="Node2D" node_paths=PackedStringArray("hp_label", "atk_label", "food_sprites", "button")]
 scale = Vector2(2, 2)
 script = ExtResource("1_5qfbp")
+hp_label = NodePath("FaceUp/HPLabel")
+atk_label = NodePath("FaceUp/ATKLabel")
+food_sprites = [NodePath("FaceUp/FoodSprite1"), NodePath("FaceUp/FoodSprite2"), NodePath("FaceUp/FoodSprite3")]
 button = NodePath("FaceUp/TextureButton")
 
 [node name="FaceUp" type="Node2D" parent="."]
@@ -181,6 +184,7 @@ texture = ExtResource("4_r6ljo")
 centered = false
 
 [node name="FoodSprite1" type="Sprite2D" parent="FaceUp"]
+visible = false
 position = Vector2(12, -17)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_bkts3")

@@ -48,7 +48,7 @@ func spawn_card() -> void:
     card.sc_ref = sc
     cards.add_child(sc)
     sc.global_position = spawn.global_position
-    sc.match_card_stats(card) # Currently doesn't do anything
+    sc.match_card_stats(card)
     sc.button.pressed.connect(buy_card.bind(sc, card, true))
     _arrange_cards()
     get_tree().create_timer(1).timeout.connect(enable_cards)

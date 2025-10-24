@@ -67,6 +67,9 @@ func attack_phase() -> void:
     
     if is_player_1_turn:
         for animal: AnimalCard in p1_animals.get_children():
+            # var animals: Array[AnimalCard] = p2_animals.get_children()
+            # if animals.size() > 0:
+            #     animals[0].
             p2_hp = clampi(p2_hp - animal.atk, 0, p2_hp)
             # TODO: Add attacking animals instead of player directly
         p2_hp_label.text = str(p2_hp)

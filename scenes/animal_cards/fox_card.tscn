@@ -45,9 +45,12 @@ _data = {
 "idle": SubResource("Animation_hk6ow")
 }
 
-[node name="FoxCard" type="Node2D" node_paths=PackedStringArray("button")]
+[node name="FoxCard" type="Node2D" node_paths=PackedStringArray("hp_label", "atk_label", "food_sprites", "button")]
 scale = Vector2(2, 2)
 script = ExtResource("1_oqf7b")
+hp_label = NodePath("FaceUp/HPLabel")
+atk_label = NodePath("FaceUp/ATKLabel")
+food_sprites = [NodePath("FaceUp/FoodSprite1"), NodePath("FaceUp/FoodSprite2"), NodePath("FaceUp/FoodSprite3")]
 button = NodePath("FaceUp/TextureButton")
 
 [node name="FaceUp" type="Node2D" parent="."]
@@ -143,7 +146,7 @@ offset_right = -8.0
 offset_bottom = 21.0
 theme_override_colors/font_color = Color(0.470588, 0.270588, 0.231373, 1)
 theme_override_font_sizes/font_size = 16
-text = "2"
+text = "0"
 
 [node name="HPLabel" type="Label" parent="FaceUp"]
 offset_left = 9.0
@@ -152,13 +155,14 @@ offset_right = 15.0
 offset_bottom = 21.0
 theme_override_colors/font_color = Color(0.470588, 0.270588, 0.231373, 1)
 theme_override_font_sizes/font_size = 16
-text = "2"
+text = "1"
 
 [node name="TitleLabel" type="Label" parent="FaceUp"]
 offset_left = -16.0
-offset_top = -32.5
+offset_top = -28.0
 offset_right = 16.0
-offset_bottom = -19.5
+offset_bottom = -15.0
+scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0.470588, 0.270588, 0.231373, 1)
 theme_override_font_sizes/font_size = 16
 text = "Fox"
@@ -180,12 +184,14 @@ texture = ExtResource("4_xswdd")
 centered = false
 
 [node name="FoodSprite1" type="Sprite2D" parent="FaceUp"]
+visible = false
 position = Vector2(12, -17)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_gfwdu")
 centered = false
 
 [node name="FoodSprite2" type="Sprite2D" parent="FaceUp"]
+visible = false
 position = Vector2(9, -17)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_gfwdu")
