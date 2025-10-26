@@ -20,10 +20,11 @@ class_name EncountersRowHandler
 var interactible = false
 
 const CARDS = [
-    [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn"),    0.4],
+    [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn"),    0.30],
     [preload("res://scenes/animal_cards/fox_card.tscn"), preload("res://scenes/animal_cards/fox_card_stats.tscn"),              0.20],
     [preload("res://scenes/animal_cards/porcupine_card.tscn"), preload("res://scenes/animal_cards/porcupine_card_stats.tscn"),  0.20],
-    [preload("res://scenes/animal_cards/red_panda_card.tscn"), preload("res://scenes/animal_cards/red_panda_card_stats.tscn"),  0.15],
+    [preload("res://scenes/animal_cards/cat_card.tscn"), preload("res://scenes/animal_cards/cat_card_stats.tscn"),              0.15],
+    [preload("res://scenes/animal_cards/red_panda_card.tscn"), preload("res://scenes/animal_cards/red_panda_card_stats.tscn"),  0.10],
     [preload("res://scenes/animal_cards/cobra_card.tscn"), preload("res://scenes/animal_cards/cobra_card_stats.tscn"),          0.05],
 ]
 
