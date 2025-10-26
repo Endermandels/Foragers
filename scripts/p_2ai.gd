@@ -62,7 +62,6 @@ func _select_all_food() -> void:
         food.selected = true
 
 func _select_minimum_food_for_purchase(animal: AnimalCard) -> void:
-    # TODO: Improve
     var foods: Array[Node] = hand.get_children()
     var meats = foods.filter(func (food): return food.meat_amount > 0)
     var plants = foods.filter(func (food): return food.plant_amount > 0)
@@ -94,30 +93,36 @@ func _buy_phase() -> void:
     # Basic AI: keep on buying the card with highest atk, then hp until no more food to spend
     var encounters: Array[Node] = encounters_row.get_children()
     var best_animal: AnimalCard = null
-    
-    _select_all_food()
 
-    for animal: AnimalCard in encounters:
-        if not hand.can_purchase(animal):
-            continue
-        if best_animal == null:
-            best_animal = animal
-            continue
-        if animal.atk > best_animal.atk:
-            best_animal = animal
-            continue
-        if animal.hp > best_animal.hp:
-            best_animal = animal
-    
-    if best_animal:
-        animal_join_sfx.play()
-        _select_minimum_food_for_purchase(best_animal)
-        hand.purchase()
-        encounters_row_handler.buy_card(best_animal.sc_ref, best_animal, false)
-        animals_handler.add_card(best_animal.sc_ref)
-        animals_row.add_child(best_animal)
-        print("bought animal")
-        get_tree().create_timer(randf_range(0.5, 1)).timeout.connect(_buy_phase)
+    # Decide whether to purchase animal or save up    
+    if randf() < 0.9:
+        _select_all_food()
+
+        for animal: AnimalCard in encounters:
+            if not hand.can_purchase(animal):
+                continue
+            if best_animal == null:
+                best_animal = animal
+                continue
+            if animal.atk > best_animal.atk:
+                best_animal = animal
+                continue
+            if animal.hp > best_animal.hp:
+                best_animal = animal
+        
+        if best_animal:
+            animal_join_sfx.play()
+            _select_minimum_food_for_purchase(best_animal)
+            hand.purchase()
+            encounters_row_handler.buy_card(best_animal.sc_ref, best_animal, false)
+            animals_handler.add_card(best_animal.sc_ref)
+            animals_row.add_child(best_animal)
+            print("bought animal")
+            get_tree().create_timer(randf_range(0.5, 1)).timeout.connect(_buy_phase)
+        else:
+            print("did not buy animal")
+            game_logic.progress_phase()
     else:
-        print("did not buy animal")
-        get_tree().create_timer(1).timeout.connect(game_logic.progress_phase)
+        print("decided to save up food")
+        game_logic.progress_phase()
+

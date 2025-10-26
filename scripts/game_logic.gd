@@ -36,6 +36,9 @@ enum GameState {
 var turn: int = 0
 var state: GameState = GameState.DRAW
 
+var p1_saving_up: bool = false # Set externally
+var p2_saving_up: bool = false # Set externally
+
 signal draw_cards(n: int, player_1: bool) ## Draw n cards
 signal show_encounters_row()
 
@@ -64,11 +67,20 @@ func draw_phase() -> void:
 		draw_cards.emit(n_beginning_cards_p1, true)
 		draw_cards.emit(n_beginning_cards_p2, false)
 	else:
-		draw_cards.emit(1, is_player_1_turn)
+		var n_cards = 1
+		if is_player_1_turn and p1_saving_up:
+			n_cards = 2
+		elif not is_player_1_turn and p2_saving_up:
+			n_cards = 2
+		draw_cards.emit(n_cards, is_player_1_turn)
 	draw_sfx.play()
 
 func buy_phase() -> void:
 	print("Buy state entered")
+	if is_player_1_turn:
+		p1_saving_up = true
+	else:
+		p2_saving_up = true
 	state = GameState.BUY
 	show_encounters_row.emit()
 	buy_phase_entered.emit()

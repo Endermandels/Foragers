@@ -31,8 +31,8 @@ func _get_random_food_card() -> FoodCard:
     var rnd: float = randf()
     var amount: int = 1
     
-    if rnd < 0.6:
-        # Plant 60%
+    if rnd < 0.7:
+        # Plant 70%
         rnd = randf()
         if rnd < 0.1: 
             # 10%
@@ -45,7 +45,7 @@ func _get_random_food_card() -> FoodCard:
             amount = 1
         sc.plant_amount = amount
     else:
-        # Meat 40%
+        # Meat 30%
         rnd = randf()
         if rnd < 0.05: 
             # 5%

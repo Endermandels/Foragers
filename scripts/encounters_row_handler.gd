@@ -99,9 +99,11 @@ func buy_card(sc: AnimalCardHandler, card: AnimalCard, player_1: bool) -> void:
         encounters_row.remove_child(card)
         animals_handler.add_card(sc)
         animals_row.add_child(card)
+        game_logic.p1_saving_up = false
     elif not player_1:
         cards.remove_child(sc)
         encounters_row.remove_child(card)
+        game_logic.p2_saving_up = false
     fill_row()
 
 func enable_cards() -> void:
