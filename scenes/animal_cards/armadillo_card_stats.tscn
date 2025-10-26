@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnccht4k6vewn"]
+
+[ext_resource type="Script" path="res://scripts/card_logic/animal_card.gd" id="1_kigyt"]
+
+[node name="ArmadilloCardStats" type="Node"]
+script = ExtResource("1_kigyt")
+type = "armadillo"
+hp = 7
+plant_cost = 0
+meat_cost = 2
