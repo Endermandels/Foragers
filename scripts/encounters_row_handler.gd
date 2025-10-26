@@ -22,13 +22,14 @@ var interactible = false
 const CARDS = [
     [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn"),    0.25],
     [preload("res://scenes/animal_cards/fox_card.tscn"), preload("res://scenes/animal_cards/fox_card_stats.tscn"),              0.15],
-    [preload("res://scenes/animal_cards/porcupine_card.tscn"), preload("res://scenes/animal_cards/porcupine_card_stats.tscn"),  0.15],
     [preload("res://scenes/animal_cards/cat_card.tscn"), preload("res://scenes/animal_cards/cat_card_stats.tscn"),              0.15],
+    [preload("res://scenes/animal_cards/porcupine_card.tscn"), preload("res://scenes/animal_cards/porcupine_card_stats.tscn"),  0.15],
     [preload("res://scenes/animal_cards/red_panda_card.tscn"), preload("res://scenes/animal_cards/red_panda_card_stats.tscn"),  0.10],
     [preload("res://scenes/animal_cards/cobra_card.tscn"), preload("res://scenes/animal_cards/cobra_card_stats.tscn"),          0.05],
-    [preload("res://scenes/animal_cards/armadillo_card.tscn"), preload("res://scenes/animal_cards/armadillo_card_stats.tscn"),  0.05],
     [preload("res://scenes/animal_cards/skunk_card.tscn"), preload("res://scenes/animal_cards/skunk_card_stats.tscn"),          0.05],
     [preload("res://scenes/animal_cards/ferret_card.tscn"), preload("res://scenes/animal_cards/ferret_card_stats.tscn"),        0.05],
+    [preload("res://scenes/animal_cards/armadillo_card.tscn"), preload("res://scenes/animal_cards/armadillo_card_stats.tscn"),  0.025],
+    [preload("res://scenes/animal_cards/boar_card.tscn"), preload("res://scenes/animal_cards/boar_card_stats.tscn"),            0.025],
 ]
 
 func _ready() -> void:
