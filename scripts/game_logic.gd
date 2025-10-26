@@ -14,6 +14,7 @@ enum GameState {
 @export var n_beginning_cards_p2: int = 3
 @export var p1_hp: int = 20
 @export var p2_hp: int = 20
+@export var low_thresh: int = 5
 
 @export_group("External Nodes")
 @export var p1_hp_label: Label
@@ -26,6 +27,11 @@ enum GameState {
 @export var p1_attacked_sfx: AudioStreamPlayer
 @export var p2_attacked_sfx: AudioStreamPlayer
 @export var draw_sfx: AudioStreamPlayer
+@export var battle_start: AudioStreamPlayer
+@export var p1_low: AudioStreamPlayer
+@export var p2_low: AudioStreamPlayer
+@export var victory: AudioStreamPlayer
+@export var defeat: AudioStreamPlayer
 
 var turn: int = 0
 var state: GameState = GameState.DRAW
@@ -52,6 +58,7 @@ func draw_phase() -> void:
 	draw_phase_entered.emit()
 
 	if turn == 0 and is_player_1_turn:
+		battle_start.play()
 		draw_cards.emit(n_beginning_cards_p1, true)
 		draw_cards.emit(n_beginning_cards_p2, false)
 	else:
@@ -87,6 +94,9 @@ func attack_phase() -> void:
 
 		if p2_hp < p2_hp_save or attacked:
 			p2_attacked_sfx.play()
+			if p2_hp <= low_thresh and battle_start.playing:
+				p2_low.play()
+				battle_start.stop()
 
 		p2_hp_label.text = str(p2_hp)
 		if p2_hp == 0:
@@ -110,6 +120,9 @@ func attack_phase() -> void:
 
 		if p1_hp < p1_hp_save or attacked:
 			p1_attacked_sfx.play()
+			if p1_hp <= low_thresh and battle_start.playing:
+				p1_low.play()
+				battle_start.stop()
 
 		p1_hp_label.text = str(p1_hp)
 		if p1_hp == 0:
@@ -121,6 +134,13 @@ func attack_phase() -> void:
 func end_game(p1_win: bool) -> void:
 	end_state_handler.handle_win(p1_win)
 	state = GameState.END
+	p1_low.stop()
+	p2_low.stop()
+	battle_start.stop()
+	if p1_win:
+		victory.play()
+	else:
+		defeat.play()
 
 func progress_phase() -> void:
 	if state == GameState.ATTACK:

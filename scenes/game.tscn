@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=28 format=3 uid="uid://ddouxdy6etpfm"]
 
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
 [ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
@@ -14,8 +14,13 @@
 [ext_resource type="Script" path="res://scripts/encounters_row_handler.gd" id="8_c7onh"]
 [ext_resource type="Script" path="res://scripts/animals_handler.gd" id="9_d3fxq"]
 [ext_resource type="AudioStream" uid="uid://d34q80u3v6ij2" path="res://assets/sfx/draw_sfx.wav" id="9_ffsop"]
+[ext_resource type="AudioStream" uid="uid://cedymnwemclt2" path="res://assets/music/09 - Battle 2.mp3" id="10_fyl7l"]
 [ext_resource type="Script" path="res://scripts/attack_button.gd" id="11_8tc6g"]
+[ext_resource type="AudioStream" uid="uid://cuxl64goa7xxv" path="res://assets/music/17 - Decisive Battle 2 - The Calamity.mp3" id="11_v12mq"]
 [ext_resource type="AudioStream" uid="uid://dd4iwyppv28ur" path="res://assets/sfx/animal_join_sfx.wav" id="12_5tv7g"]
+[ext_resource type="AudioStream" uid="uid://bnarcwq8y2j6l" path="res://assets/music/13 - Decisive Battle 1 - Don't Be Afraid.mp3" id="12_t10lw"]
+[ext_resource type="AudioStream" uid="uid://dd3ib0rt3s7g" path="res://assets/music/06 - Victory!.mp3" id="13_s34ic"]
+[ext_resource type="AudioStream" uid="uid://bap0g2kdlyiyn" path="res://assets/music/18 - Never Give Up.mp3" id="14_7sxud"]
 [ext_resource type="AudioStream" uid="uid://bcrmwyh0es8bg" path="res://assets/sfx/attack_btn_sfx.wav" id="14_jpjud"]
 [ext_resource type="AudioStream" uid="uid://cpcew4hssrtf1" path="res://assets/sfx/attack_sfx.wav" id="15_001wf"]
 [ext_resource type="Script" path="res://scripts/end_state_handler.gd" id="15_p4rue"]
@@ -29,7 +34,7 @@ shader_parameter/radius = 0.0
 
 [node name="Game" type="Node2D"]
 
-[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "end_state_handler", "p1_animals", "p2_animals", "p1_attacked_sfx", "p2_attacked_sfx", "draw_sfx")]
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "end_state_handler", "p1_animals", "p2_animals", "p1_attacked_sfx", "p2_attacked_sfx", "draw_sfx", "battle_start", "p1_low", "p2_low", "victory", "defeat")]
 script = ExtResource("2_xmjd3")
 p1_hp_label = NodePath("../Table/P1HP/Label")
 p2_hp_label = NodePath("../Table/P2HP/Label")
@@ -39,6 +44,11 @@ p2_animals = NodePath("P2Animals")
 p1_attacked_sfx = NodePath("P1AttackedSFX")
 p2_attacked_sfx = NodePath("P2AttackedSFX")
 draw_sfx = NodePath("DrawSFX")
+battle_start = NodePath("BattleStart")
+p1_low = NodePath("P1Low")
+p2_low = NodePath("P2Low")
+victory = NodePath("Victory")
+defeat = NodePath("Defeat")
 
 [node name="P1Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
@@ -123,6 +133,22 @@ stream = ExtResource("15_001wf")
 
 [node name="DrawSFX" type="AudioStreamPlayer" parent="GameLogic"]
 stream = ExtResource("9_ffsop")
+
+[node name="BattleStart" type="AudioStreamPlayer" parent="GameLogic"]
+stream = ExtResource("10_fyl7l")
+autoplay = true
+
+[node name="P1Low" type="AudioStreamPlayer" parent="GameLogic"]
+stream = ExtResource("11_v12mq")
+
+[node name="P2Low" type="AudioStreamPlayer" parent="GameLogic"]
+stream = ExtResource("12_t10lw")
+
+[node name="Victory" type="AudioStreamPlayer" parent="GameLogic"]
+stream = ExtResource("13_s34ic")
+
+[node name="Defeat" type="AudioStreamPlayer" parent="GameLogic"]
+stream = ExtResource("14_7sxud")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
@@ -380,9 +406,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 148.0
+offset_left = 172.0
 offset_top = 196.0
-offset_right = 484.0
+offset_right = 476.0
 offset_bottom = 298.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -390,7 +416,7 @@ grow_vertical = 2
 [node name="P1WinLabel" type="Label" parent="EndStateHandler/P1Win"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
-text = "You Win!"
+text = "Victory!"
 
 [node name="P1Lose" type="PanelContainer" parent="EndStateHandler"]
 modulate = Color(1, 1, 1, 0)
@@ -401,9 +427,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 88.0
+offset_left = 188.0
 offset_top = 196.0
-offset_right = 544.0
+offset_right = 460.0
 offset_bottom = 298.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -411,7 +437,7 @@ grow_vertical = 2
 [node name="P1LoseLabel" type="Label" parent="EndStateHandler/P1Lose"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
-text = "You Lose :("
+text = "Defeat"
 
 [editable path="Table/P1Deck/P1DeckSprite"]
 [editable path="Table/P2Deck/P2DeckSprite"]
