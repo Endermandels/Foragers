@@ -38,8 +38,6 @@ shader_parameter/radius = 0.0
 
 [node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "end_state_handler", "p1_animals", "p2_animals", "p1_attacked_sfx", "p2_attacked_sfx", "draw_sfx", "battle_start", "p1_low", "p2_low", "victory", "defeat")]
 script = ExtResource("2_xmjd3")
-p1_hp = 1
-p2_hp = 1
 p1_hp_label = NodePath("../Table/P1HP/Label")
 p2_hp_label = NodePath("../Table/P2HP/Label")
 end_state_handler = NodePath("../EndStateHandler")
