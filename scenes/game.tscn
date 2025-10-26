@@ -382,6 +382,7 @@ position = Vector2(0, 320)
 stream = ExtResource("19_dhomk")
 
 [node name="EndStateHandler" type="Control" parent="." node_paths=PackedStringArray("shade_rect", "p1_win", "p1_lose", "play_again_btn")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

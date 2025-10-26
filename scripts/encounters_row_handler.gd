@@ -20,16 +20,22 @@ class_name EncountersRowHandler
 var interactible = false
 
 const CARDS = [
-    [preload("res://scenes/animal_cards/fox_card.tscn"), preload("res://scenes/animal_cards/fox_card_stats.tscn"),                  0.35]
-    , [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn"),      0.5]
-    , [preload("res://scenes/animal_cards/porcupine_card.tscn"), preload("res://scenes/animal_cards/porcupine_card_stats.tscn"),    0.1]
-    , [preload("res://scenes/animal_cards/cobra_card.tscn"), preload("res://scenes/animal_cards/cobra_card_stats.tscn"),            0.05]
+    [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn"),    0.4],
+    [preload("res://scenes/animal_cards/fox_card.tscn"), preload("res://scenes/animal_cards/fox_card_stats.tscn"),              0.20],
+    [preload("res://scenes/animal_cards/porcupine_card.tscn"), preload("res://scenes/animal_cards/porcupine_card_stats.tscn"),  0.20],
+    [preload("res://scenes/animal_cards/red_panda_card.tscn"), preload("res://scenes/animal_cards/red_panda_card_stats.tscn"),  0.15],
+    [preload("res://scenes/animal_cards/cobra_card.tscn"), preload("res://scenes/animal_cards/cobra_card_stats.tscn"),          0.05],
 ]
 
 func _ready() -> void:
     game_logic.show_encounters_row.connect(fill_row)
     game_logic.attack_phase_entered.connect(disable_cards)
     game_logic.buy_phase_entered.connect(enable_cards)
+    var isOne = 0
+    for CARD in CARDS:
+        isOne += CARD[2]
+    if isOne != 1:
+        push_warning("Card probabilities do not add to one: " + str(isOne))
 
 func fill_row() -> void:
     while cards.get_child_count() < n_cards_in_row:

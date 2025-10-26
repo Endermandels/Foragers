@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct85cvum6mbqy"]
+
+[ext_resource type="Script" path="res://scripts/card_logic/animal_card.gd" id="1_nxdeo"]
+
+[node name="RedPandaCardStats" type="Node"]
+script = ExtResource("1_nxdeo")
+type = "redpanda"
+hp = 4
+atk = 2
+plant_cost = 4
