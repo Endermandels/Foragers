@@ -5,6 +5,6 @@
 [node name="CobraCardStats" type="Node"]
 script = ExtResource("1_cn23w")
 type = "cobra"
-atk = 4
+atk = 5
 plant_cost = 0
 meat_cost = 2

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://csx6u4rmoqyvj"]
+
+[ext_resource type="Script" path="res://scripts/card_logic/animal_card.gd" id="1_74aym"]
+
+[node name="FerretCardStats" type="Node"]
+script = ExtResource("1_74aym")
+type = "ferret"
+hp = 4
+atk = 3
+plant_cost = 0
+meat_cost = 2
