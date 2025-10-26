@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/card_logic/animal_card.gd" id="1_2hm57"]
 
-[node name="SquirrelCardStats" type="Node"]
+[node name="PorcupineCardStats" type="Node"]
 script = ExtResource("1_2hm57")
+type = "porcupine"
 hp = 5
-atk = 2
-plant_cost = 6
+atk = 1
+plant_cost = 5

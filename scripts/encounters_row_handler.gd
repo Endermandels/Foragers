@@ -20,9 +20,10 @@ class_name EncountersRowHandler
 var interactible = false
 
 const CARDS = [
-    [preload("res://scenes/animal_cards/fox_card.tscn"), preload("res://scenes/animal_cards/fox_card_stats.tscn")]
-    , [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn")]
-    , [preload("res://scenes/animal_cards/porcupine_card.tscn"), preload("res://scenes/animal_cards/porcupine_card_stats.tscn")]
+    [preload("res://scenes/animal_cards/fox_card.tscn"), preload("res://scenes/animal_cards/fox_card_stats.tscn"),                  0.35]
+    , [preload("res://scenes/animal_cards/squirrel_card.tscn"), preload("res://scenes/animal_cards/squirrel_card_stats.tscn"),      0.5]
+    , [preload("res://scenes/animal_cards/porcupine_card.tscn"), preload("res://scenes/animal_cards/porcupine_card_stats.tscn"),    0.1]
+    , [preload("res://scenes/animal_cards/cobra_card.tscn"), preload("res://scenes/animal_cards/cobra_card_stats.tscn"),            0.05]
 ]
 
 func _ready() -> void:
@@ -35,20 +36,39 @@ func fill_row() -> void:
         spawn_card()
 
 func get_animal_card() -> Array:
-    var rnd: float = randf()
-    var card_arr
+    var card_arr = null
+    var chosen_card_type = null
+    var common_card_type = null
+    var same = 0
 
-    if rnd < 0.1:
-        # 35%
-        card_arr = CARDS[0]
-    elif rnd < 0.7:
-        # 50%
-        card_arr = CARDS[1]
-    else:
-        # 15%
-        card_arr = CARDS[2]
+    var children = encounters_row.get_children()
+    if children.size() == n_cards_in_row - 1:
+        # Check if all cards are of the same type
+        for child: AnimalCard in children:
+            if common_card_type == null:
+                common_card_type = child
+                same = 1
+                continue
+            if child.type == common_card_type.type:
+                same += 1
+        if same < n_cards_in_row - 1:
+            common_card_type = null
 
-    return [card_arr[0].instantiate(), card_arr[1].instantiate()]
+    while chosen_card_type == null or common_card_type != null:
+        if chosen_card_type:
+            chosen_card_type.queue_free()
+        var rnd: float = randf()
+        var pc = 0
+        for CARD in CARDS:
+            if rnd < CARD[2] + pc:
+                card_arr = CARD
+                break
+            pc += CARD[2]
+        chosen_card_type = card_arr[1].instantiate()
+        if common_card_type and chosen_card_type.type != common_card_type.type:
+            break
+
+    return [card_arr[0].instantiate(), chosen_card_type]
 
 func spawn_card() -> void:
     ## Spawn a random Animal card for the encounters row

@@ -4,7 +4,8 @@
 
 [node name="FoxCardStats" type="Node"]
 script = ExtResource("1_q1b7d")
+type = "fox"
 hp = 2
 atk = 2
 plant_cost = 0
-meat_cost = 2
+meat_cost = 1
