@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=29 format=3 uid="uid://ddouxdy6etpfm"]
 
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
 [ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
@@ -32,10 +32,14 @@
 shader = ExtResource("1_h1wkj")
 shader_parameter/radius = 0.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ud201"]
+
 [node name="Game" type="Node2D"]
 
 [node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "end_state_handler", "p1_animals", "p2_animals", "p1_attacked_sfx", "p2_attacked_sfx", "draw_sfx", "battle_start", "p1_low", "p2_low", "victory", "defeat")]
 script = ExtResource("2_xmjd3")
+p1_hp = 1
+p2_hp = 1
 p1_hp_label = NodePath("../Table/P1HP/Label")
 p2_hp_label = NodePath("../Table/P2HP/Label")
 end_state_handler = NodePath("../EndStateHandler")
@@ -379,8 +383,7 @@ position = Vector2(0, 320)
 [node name="SFX" type="AudioStreamPlayer" parent="Hand"]
 stream = ExtResource("19_dhomk")
 
-[node name="EndStateHandler" type="Control" parent="." node_paths=PackedStringArray("shade_rect", "p1_win", "p1_lose")]
-visible = false
+[node name="EndStateHandler" type="Control" parent="." node_paths=PackedStringArray("shade_rect", "p1_win", "p1_lose", "play_again_btn")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -389,6 +392,7 @@ script = ExtResource("15_p4rue")
 shade_rect = NodePath("ShadeRect")
 p1_win = NodePath("P1Win")
 p1_lose = NodePath("P1Lose")
+play_again_btn = NodePath("PlayAgainButton")
 
 [node name="ShadeRect" type="ColorRect" parent="EndStateHandler"]
 modulate = Color(1, 1, 1, 0)
@@ -398,7 +402,6 @@ offset_bottom = 480.0
 color = Color(0, 0, 0, 1)
 
 [node name="P1Win" type="PanelContainer" parent="EndStateHandler"]
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -419,7 +422,6 @@ theme_override_font_sizes/font_size = 128
 text = "Victory!"
 
 [node name="P1Lose" type="PanelContainer" parent="EndStateHandler"]
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -438,6 +440,17 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Defeat"
+
+[node name="PlayAgainButton" type="Button" parent="EndStateHandler"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 384.0
+offset_right = 431.0
+offset_bottom = 430.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ud201")
+text = "Play Again"
 
 [editable path="Table/P1Deck/P1DeckSprite"]
 [editable path="Table/P2Deck/P2DeckSprite"]

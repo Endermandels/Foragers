@@ -46,6 +46,8 @@ signal attack_phase_entered
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
+	if event.is_action_pressed("reset"):
+		get_tree().reload_current_scene()
 
 func _ready() -> void:
 	get_tree().create_timer(0.2).timeout.connect(draw_phase)
