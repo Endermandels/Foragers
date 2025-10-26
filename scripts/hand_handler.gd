@@ -15,6 +15,7 @@ class_name HandHandler
 @export var right_bound: Node2D
 @export var hidden_y: Node2D
 @export var cards: Node2D
+@export var sfx: AudioStreamPlayer
 
 var interactible = false
 var hand_shown = false
@@ -25,10 +26,14 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if hand_shown and interactible and event.is_action("wheel_down"):
         fade_out_hand()
+        sfx.pitch_scale = 0.8
+        sfx.play()
         if game_logic.state == GameLogic.GameState.DRAW and game_logic.is_player_1_turn:
             game_logic.progress_phase()
     if not hand_shown and interactible and event.is_action("wheel_up"):
         fade_in_hand()
+        sfx.pitch_scale = 1
+        sfx.play()
 
 func _arrange_cards():
     var total_width = (cards.get_child_count() - 1) * card_spacing

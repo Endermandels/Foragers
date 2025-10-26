@@ -9,11 +9,14 @@ class_name AnimalsHandler
 @export var right_bound: Node2D
 @export var y_value: Node2D
 @export var cards: Node2D
+@export var animal_join_sfx: AudioStreamPlayer
 
 func add_card(card: AnimalCardHandler) -> void:
     if card == null:
         return
 
+    if animal_join_sfx:
+        animal_join_sfx.play()
     cards.add_child(card)
     card.dead.connect(_delayed_arrange_cards.bind(0.2))
     _arrange_cards()

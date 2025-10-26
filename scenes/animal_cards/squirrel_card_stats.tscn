@@ -4,3 +4,4 @@
 
 [node name="SquirrelCardStats" type="Node"]
 script = ExtResource("1_068nv")
+atk = 1

@@ -4,6 +4,9 @@ class_name AttackButton
 @export_group("External Nodes")
 @export var game_logic: GameLogic
 
+@export_group("Internal Nodes")
+@export var sfx: AudioStreamPlayer
+
 func _ready() -> void:
     pressed.connect(click)
     game_logic.buy_phase_entered.connect(enable_click)
@@ -11,6 +14,7 @@ func _ready() -> void:
 
 func click() -> void:
     if game_logic.state == GameLogic.GameState.BUY and game_logic.is_player_1_turn:
+        sfx.play()
         game_logic.progress_phase()
         disable_click()
 

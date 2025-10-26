@@ -12,6 +12,7 @@ class_name P2AI
 @export var encounters_row_handler: EncountersRowHandler
 @export var animals_handler: AnimalsHandler
 @export var deck_count_label: Label
+@export var animal_join_sfx: AudioStreamPlayer
 
 func _ready() -> void:
     game_logic.draw_cards.connect(draw_cards)
@@ -109,6 +110,7 @@ func _buy_phase() -> void:
             best_animal = animal
     
     if best_animal:
+        animal_join_sfx.play()
         _select_minimum_food_for_purchase(best_animal)
         hand.purchase()
         encounters_row_handler.buy_card(best_animal.sc_ref, best_animal, false)

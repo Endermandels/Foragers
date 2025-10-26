@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=23 format=3 uid="uid://ddouxdy6etpfm"]
 
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
 [ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
@@ -13,8 +13,13 @@
 [ext_resource type="Script" path="res://scripts/p_2ai.gd" id="7_r6q1w"]
 [ext_resource type="Script" path="res://scripts/encounters_row_handler.gd" id="8_c7onh"]
 [ext_resource type="Script" path="res://scripts/animals_handler.gd" id="9_d3fxq"]
+[ext_resource type="AudioStream" uid="uid://d34q80u3v6ij2" path="res://assets/sfx/draw_sfx.wav" id="9_ffsop"]
 [ext_resource type="Script" path="res://scripts/attack_button.gd" id="11_8tc6g"]
+[ext_resource type="AudioStream" uid="uid://dd4iwyppv28ur" path="res://assets/sfx/animal_join_sfx.wav" id="12_5tv7g"]
+[ext_resource type="AudioStream" uid="uid://bcrmwyh0es8bg" path="res://assets/sfx/attack_btn_sfx.wav" id="14_jpjud"]
+[ext_resource type="AudioStream" uid="uid://cpcew4hssrtf1" path="res://assets/sfx/attack_sfx.wav" id="15_001wf"]
 [ext_resource type="Script" path="res://scripts/end_state_handler.gd" id="15_p4rue"]
+[ext_resource type="AudioStream" uid="uid://bv0px4ogdjyip" path="res://assets/sfx/hand_sfx.wav" id="19_dhomk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kuimb"]
 
@@ -24,23 +29,21 @@ shader_parameter/radius = 0.0
 
 [node name="Game" type="Node2D"]
 
-[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "end_state_handler", "p1_animals", "p2_animals")]
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("p1_hp_label", "p2_hp_label", "end_state_handler", "p1_animals", "p2_animals", "p1_attacked_sfx", "p2_attacked_sfx", "draw_sfx")]
 script = ExtResource("2_xmjd3")
-is_player_1_turn = null
-n_beginning_cards_p1 = null
-n_beginning_cards_p2 = null
-p1_hp = null
-p2_hp = null
 p1_hp_label = NodePath("../Table/P1HP/Label")
 p2_hp_label = NodePath("../Table/P2HP/Label")
 end_state_handler = NodePath("../EndStateHandler")
 p1_animals = NodePath("P1Animals")
 p2_animals = NodePath("P2Animals")
+p1_attacked_sfx = NodePath("P1AttackedSFX")
+p2_attacked_sfx = NodePath("P2AttackedSFX")
+draw_sfx = NodePath("DrawSFX")
 
 [node name="P1Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
 is_player_1 = true
-deck_size = 4
+randomize_deck = true
 
 [node name="FoodCard" type="Node" parent="GameLogic/P1Deck"]
 script = ExtResource("4_egx6h")
@@ -64,7 +67,7 @@ is_player_1 = true
 
 [node name="P2Deck" type="Node" parent="GameLogic"]
 script = ExtResource("3_txcl7")
-deck_size = 4
+randomize_deck = true
 
 [node name="FoodCard" type="Node" parent="GameLogic/P2Deck"]
 script = ExtResource("4_egx6h")
@@ -98,7 +101,7 @@ script = ExtResource("6_c883u")
 [node name="P2Animals" type="Node" parent="GameLogic"]
 script = ExtResource("6_c883u")
 
-[node name="P2AI" type="Node" parent="GameLogic" node_paths=PackedStringArray("game_logic", "deck_sprite", "hand_location", "deck", "hand", "animals_row", "encounters_row", "encounters_row_handler", "animals_handler", "deck_count_label")]
+[node name="P2AI" type="Node" parent="GameLogic" node_paths=PackedStringArray("game_logic", "deck_sprite", "hand_location", "deck", "hand", "animals_row", "encounters_row", "encounters_row_handler", "animals_handler", "deck_count_label", "animal_join_sfx")]
 script = ExtResource("7_r6q1w")
 game_logic = NodePath("..")
 deck_sprite = NodePath("../../Table/P2Deck/P2DeckSprite")
@@ -110,6 +113,16 @@ encounters_row = NodePath("../EncountersRow")
 encounters_row_handler = NodePath("../../Table/EncountersRow")
 animals_handler = NodePath("../../Table/P2Animals")
 deck_count_label = NodePath("../../Table/P2Deck/P2DeckCount")
+animal_join_sfx = NodePath("../../Table/P1Animals/AnimalJoinSFX")
+
+[node name="P1AttackedSFX" type="AudioStreamPlayer" parent="GameLogic"]
+stream = ExtResource("15_001wf")
+
+[node name="P2AttackedSFX" type="AudioStreamPlayer" parent="GameLogic"]
+stream = ExtResource("15_001wf")
+
+[node name="DrawSFX" type="AudioStreamPlayer" parent="GameLogic"]
+stream = ExtResource("9_ffsop")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
@@ -247,13 +260,14 @@ position = Vector2(704, 0)
 
 [node name="Cards" type="Node2D" parent="Table/EncountersRow"]
 
-[node name="P1Animals" type="Node2D" parent="Table" node_paths=PackedStringArray("left_bound", "right_bound", "y_value", "cards")]
+[node name="P1Animals" type="Node2D" parent="Table" node_paths=PackedStringArray("left_bound", "right_bound", "y_value", "cards", "animal_join_sfx")]
 position = Vector2(0, 256)
 script = ExtResource("9_d3fxq")
 left_bound = NodePath("LeftBound")
 right_bound = NodePath("RightBound")
 y_value = NodePath("YValue")
 cards = NodePath("Cards")
+animal_join_sfx = NodePath("AnimalJoinSFX")
 
 [node name="RightBound" type="Node2D" parent="Table/P1Animals"]
 position = Vector2(504, 152)
@@ -265,6 +279,9 @@ position = Vector2(152, 152)
 position = Vector2(0, 152)
 
 [node name="Cards" type="Node2D" parent="Table/P1Animals"]
+
+[node name="AnimalJoinSFX" type="AudioStreamPlayer" parent="Table/P1Animals"]
+stream = ExtResource("12_5tv7g")
 
 [node name="P2Animals" type="Node2D" parent="Table" node_paths=PackedStringArray("left_bound", "right_bound", "y_value", "cards")]
 position = Vector2(0, 256)
@@ -285,7 +302,7 @@ position = Vector2(0, -184)
 
 [node name="Cards" type="Node2D" parent="Table/P2Animals"]
 
-[node name="P1AttackButton" type="Button" parent="Table" node_paths=PackedStringArray("game_logic")]
+[node name="P1AttackButton" type="Button" parent="Table" node_paths=PackedStringArray("game_logic", "sfx")]
 offset_left = 8.0
 offset_top = 440.0
 offset_right = 88.0
@@ -296,6 +313,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kuimb")
 text = "ATTACK!"
 script = ExtResource("11_8tc6g")
 game_logic = NodePath("../../GameLogic")
+sfx = NodePath("AttackButtonSFX")
+
+[node name="AttackButtonSFX" type="AudioStreamPlayer" parent="Table/P1AttackButton"]
+stream = ExtResource("14_jpjud")
 
 [node name="P2Hand" type="Node2D" parent="Table"]
 position = Vector2(320, -88)
@@ -306,7 +327,7 @@ material = SubResource("ShaderMaterial_qe6os")
 offset_right = 640.0
 offset_bottom = 480.0
 
-[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("game_logic", "hand", "blur_rect", "left_bound", "right_bound", "hidden_y", "cards")]
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("game_logic", "hand", "blur_rect", "left_bound", "right_bound", "hidden_y", "cards", "sfx")]
 position = Vector2(0, 256)
 script = ExtResource("7_jk5ww")
 game_logic = NodePath("../GameLogic")
@@ -316,6 +337,7 @@ left_bound = NodePath("LeftBound")
 right_bound = NodePath("RightBound")
 hidden_y = NodePath("HiddenY")
 cards = NodePath("Cards")
+sfx = NodePath("SFX")
 
 [node name="RightBound" type="Node2D" parent="Hand"]
 position = Vector2(576, 0)
@@ -327,6 +349,9 @@ position = Vector2(128, 0)
 position = Vector2(0, 320)
 
 [node name="Cards" type="Node2D" parent="Hand"]
+
+[node name="SFX" type="AudioStreamPlayer" parent="Hand"]
+stream = ExtResource("19_dhomk")
 
 [node name="EndStateHandler" type="Control" parent="." node_paths=PackedStringArray("shade_rect", "p1_win", "p1_lose")]
 visible = false

@@ -7,6 +7,7 @@ class_name FoodCardHandler
 @export var meat_sprite: Sprite2D
 @export var selected_rect: ColorRect
 @export var hidden_view: Node2D
+@export var select_sfx: AudioStreamPlayer
 
 var selected: bool = false
 var card_ref: FoodCard
@@ -34,3 +35,4 @@ func click() -> void:
         selected = true
         selected_rect.show()
     card_ref.selected = selected
+    select_sfx.play()

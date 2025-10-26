@@ -39,14 +39,14 @@ func get_animal_card() -> Array:
     var card_arr
 
     if rnd < 0.1:
-        # 10%
-        card_arr = CARDS[2]
-    elif rnd < 0.7:
-        # 60%
+        # 35%
         card_arr = CARDS[0]
-    else:
-        # 30%
+    elif rnd < 0.7:
+        # 50%
         card_arr = CARDS[1]
+    else:
+        # 15%
+        card_arr = CARDS[2]
 
     return [card_arr[0].instantiate(), card_arr[1].instantiate()]
 
