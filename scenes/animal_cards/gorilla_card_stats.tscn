@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://buwqnitbf27am"]
+
+[ext_resource type="Script" path="res://scripts/card_logic/animal_card.gd" id="1_6oc50"]
+
+[node name="GorillaCardStats" type="Node"]
+script = ExtResource("1_6oc50")
+type = "gorilla"
+hp = 8
+atk = 5
+plant_cost = 8

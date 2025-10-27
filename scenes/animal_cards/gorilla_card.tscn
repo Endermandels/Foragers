@@ -1,0 +1,291 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdxkabdof2rm3"]
+
+[ext_resource type="Script" path="res://scripts/animal_card_handler.gd" id="1_ds20n"]
+[ext_resource type="Texture2D" uid="uid://bche8uyjgg4uw" path="res://assets/images/Giant Gorilla Sprite Sheet.png" id="2_fj3wg"]
+[ext_resource type="Texture2D" uid="uid://b84nm258dye00" path="res://assets/images/attack-icon.png" id="3_4yytn"]
+[ext_resource type="Texture2D" uid="uid://c18iv477p1rxe" path="res://assets/images/hp-icon.png" id="4_anogd"]
+[ext_resource type="Texture2D" uid="uid://dg78luprubn11" path="res://assets/images/meat-icon.png" id="5_e52hx"]
+
+[sub_resource type="Animation" id="Animation_cergv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ImageSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hk6ow"]
+resource_name = "idle"
+length = 0.666683
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ImageSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_auve2"]
+_data = {
+"RESET": SubResource("Animation_cergv"),
+"idle": SubResource("Animation_hk6ow")
+}
+
+[node name="GorillaCard" type="Node2D" node_paths=PackedStringArray("hp_label", "atk_label", "food_sprites", "button")]
+scale = Vector2(2, 2)
+script = ExtResource("1_ds20n")
+hp_label = NodePath("FaceUp/HPLabel")
+atk_label = NodePath("FaceUp/ATKLabel")
+food_sprites = [NodePath("FaceUp/FoodSprite1"), NodePath("FaceUp/FoodSprite2"), NodePath("FaceUp/FoodSprite3"), NodePath("FaceUp/FoodSprite4"), NodePath("FaceUp/FoodSprite5"), NodePath("FaceUp/FoodSprite6"), NodePath("FaceUp/FoodSprite7"), NodePath("FaceUp/FoodSprite8")]
+button = NodePath("FaceUp/TextureButton")
+
+[node name="FaceUp" type="Node2D" parent="."]
+
+[node name="CardBorder" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47, 0.27025, 0.2303, 1)
+
+[node name="CardBackground" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -30.0
+offset_right = 18.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.941176, 0.513726, 0.282353, 1)
+
+[node name="StatsBackground" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = 11.0
+offset_right = 16.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.96, 0.86064, 0.7392, 1)
+
+[node name="TitleBackground" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -29.0
+offset_right = 17.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.96, 0.86064, 0.7392, 1)
+
+[node name="ImageBorder" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -19.5
+offset_right = 16.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17, 0.17, 0.17, 1)
+
+[node name="ImageBackground" type="ColorRect" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.5
+offset_right = 15.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.459535, 0.73, 0.4453, 1)
+
+[node name="ATKLabel" type="Label" parent="FaceUp"]
+offset_left = -14.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.470588, 0.270588, 0.231373, 1)
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="HPLabel" type="Label" parent="FaceUp"]
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 15.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.470588, 0.270588, 0.231373, 1)
+theme_override_font_sizes/font_size = 16
+text = "1"
+
+[node name="TitleLabel" type="Label" parent="FaceUp"]
+offset_left = -16.0
+offset_top = -28.0
+offset_right = 16.0
+offset_bottom = -15.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.470588, 0.270588, 0.231373, 1)
+theme_override_font_sizes/font_size = 16
+text = "Gorilla"
+
+[node name="ImageSprite" type="Sprite2D" parent="FaceUp"]
+position = Vector2(0, -9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fj3wg")
+hframes = 12
+vframes = 10
+
+[node name="ATKSprite" type="Sprite2D" parent="FaceUp"]
+position = Vector2(-14, 20)
+texture = ExtResource("3_4yytn")
+centered = false
+
+[node name="HPSprite" type="Sprite2D" parent="FaceUp"]
+position = Vector2(9, 20)
+texture = ExtResource("4_anogd")
+centered = false
+
+[node name="FoodSprite1" type="Sprite2D" parent="FaceUp"]
+visible = false
+position = Vector2(12, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e52hx")
+centered = false
+
+[node name="FoodSprite2" type="Sprite2D" parent="FaceUp"]
+visible = false
+position = Vector2(9, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e52hx")
+centered = false
+
+[node name="FoodSprite3" type="Sprite2D" parent="FaceUp"]
+visible = false
+position = Vector2(6, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e52hx")
+centered = false
+
+[node name="FoodSprite4" type="Sprite2D" parent="FaceUp"]
+visible = false
+position = Vector2(3, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e52hx")
+centered = false
+
+[node name="FoodSprite5" type="Sprite2D" parent="FaceUp"]
+visible = false
+position = Vector2(0, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e52hx")
+centered = false
+
+[node name="FoodSprite6" type="Sprite2D" parent="FaceUp"]
+visible = false
+position = Vector2(-3, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e52hx")
+centered = false
+
+[node name="FoodSprite7" type="Sprite2D" parent="FaceUp"]
+visible = false
+position = Vector2(-6, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e52hx")
+centered = false
+
+[node name="FoodSprite8" type="Sprite2D" parent="FaceUp"]
+visible = false
+position = Vector2(-9, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e52hx")
+centered = false
+
+[node name="TextureButton" type="TextureButton" parent="FaceUp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FaceUp"]
+libraries = {
+"": SubResource("AnimationLibrary_auve2")
+}
+autoplay = "idle"
+
+[node name="FaceDown" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect3" type="ColorRect" parent="FaceDown"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94, 0.5123, 0.282, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="FaceDown"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -30.0
+offset_right = 18.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.59, 0.252717, 0.177, 1)

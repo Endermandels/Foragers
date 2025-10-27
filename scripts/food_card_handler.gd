@@ -9,6 +9,7 @@ class_name FoodCardHandler
 @export var hidden_view: Node2D
 @export var select_sfx: AudioStreamPlayer
 
+var hand_handler: HandHandler
 var selected: bool = false
 var card_ref: FoodCard
 
@@ -28,6 +29,9 @@ func match_card_stats(card: FoodCard):
         meat_sprite.show()
 
 func click() -> void:
+    if not hand_handler.is_highest_z(self):
+        print("{self} is not")
+        return
     if selected:
         selected = false
         selected_rect.hide()

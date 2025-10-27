@@ -32,6 +32,7 @@ offset_right = 22.0
 offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.92, 0.92, 0, 1)
 
 [node name="CardBorder" type="ColorRect" parent="FaceUp"]
@@ -46,6 +47,7 @@ offset_right = 20.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.47, 0.2303, 0.234295, 1)
 
 [node name="CardBackground" type="ColorRect" parent="FaceUp"]
@@ -60,6 +62,7 @@ offset_right = 18.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.94, 0.391667, 0.282, 1)
 
 [node name="StatsBackground" type="ColorRect" parent="FaceUp"]
@@ -74,6 +77,7 @@ offset_right = 16.0
 offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.96, 0.86064, 0.7392, 1)
 
 [node name="ImageBorder" type="ColorRect" parent="FaceUp"]
@@ -87,6 +91,7 @@ offset_top = -28.0
 offset_right = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.17, 0.17, 0.17, 1)
 
 [node name="ImageBackground" type="ColorRect" parent="FaceUp"]
@@ -101,6 +106,7 @@ offset_right = 15.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.459535, 0.73, 0.4453, 1)
 
 [node name="ImageSprite" type="Sprite2D" parent="FaceUp"]
@@ -142,6 +148,7 @@ offset_right = 20.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="SelectSFX" type="AudioStreamPlayer" parent="FaceUp"]
 stream = ExtResource("5_ak37g")
@@ -161,6 +168,7 @@ offset_right = 20.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.941176, 0.392157, 0.282353, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="FaceDown"]
@@ -175,4 +183,5 @@ offset_right = 18.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.470588, 0.231373, 0.235294, 1)
