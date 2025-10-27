@@ -12,9 +12,12 @@ class_name AnimalCard
 # Set elsewhere
 var sc_ref: AnimalCardHandler = null
 
-func take_damage(dmg: int) -> void:
+# Returns how much damage was taken
+func take_damage(dmg: int) -> int:
+    var old_hp = hp
     hp = clampi(hp - dmg, 0, hp)
     sc_ref.match_card_stats(self)
     if hp == 0:
         sc_ref.die()
         queue_free()
+    return old_hp - hp

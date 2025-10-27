@@ -97,12 +97,14 @@ func attack_phase() -> void:
 			if animal.atk == 0:
 				continue
 			var atkd = false
+			var atk_left = animal.atk
 			for p2_animal: AnimalCard in p2_animals.get_children():
 				if p2_animal.hp > 0:
-					p2_animal.take_damage(animal.atk)
+					atk_left -= p2_animal.take_damage(atk_left)
 					attacked = true
 					atkd = true
-					break
+					if atk_left < 1:
+						break
 			if not atkd:
 				p2_hp = clampi(p2_hp - animal.atk, 0, p2_hp)
 
@@ -123,12 +125,14 @@ func attack_phase() -> void:
 			if animal.atk == 0:
 				continue
 			var atkd = false
+			var atk_left = animal.atk
 			for p1_animal: AnimalCard in p1_animals.get_children():
 				if p1_animal.hp > 0:
-					p1_animal.take_damage(animal.atk)
+					atk_left -= p1_animal.take_damage(atk_left)
 					attacked = true
 					atkd = true
-					break
+					if atk_left < 1:
+						break
 			if not atkd:
 				p1_hp = clampi(p1_hp - animal.atk, 0, p1_hp)
 
