@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ddouxdy6etpfm"]
+[gd_scene load_steps=37 format=3 uid="uid://ddouxdy6etpfm"]
 
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_h1wkj"]
 [ext_resource type="PackedScene" uid="uid://cljpgmi0couvj" path="res://scenes/food_card.tscn" id="2_qlt8m"]
@@ -25,8 +25,24 @@
 [ext_resource type="AudioStream" uid="uid://cpcew4hssrtf1" path="res://assets/sfx/attack_sfx.wav" id="15_001wf"]
 [ext_resource type="Script" path="res://scripts/end_state_handler.gd" id="15_p4rue"]
 [ext_resource type="AudioStream" uid="uid://bv0px4ogdjyip" path="res://assets/sfx/hand_sfx.wav" id="19_dhomk"]
+[ext_resource type="Texture2D" uid="uid://dg78luprubn11" path="res://assets/images/meat-icon.png" id="22_qc2ih"]
+[ext_resource type="Texture2D" uid="uid://bkn1eoe34qnjh" path="res://assets/images/plant-icon.png" id="23_iurk7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kuimb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yp4fr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ous4f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tmtel"]
+texture = SubResource("CanvasTexture_ous4f")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_huowb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_k2ao1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5xsb"]
+texture = SubResource("CanvasTexture_k2ao1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qe6os"]
 shader = ExtResource("1_h1wkj")
@@ -218,7 +234,7 @@ theme_override_font_sizes/font_size = 72
 text = "20"
 metadata/_edit_use_anchors_ = true
 
-[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "animal_row", "deck_button", "deck_sprite", "hand_handler", "deck_count_label")]
+[node name="P1Deck" type="Node2D" parent="Table" node_paths=PackedStringArray("game_logic", "deck", "hand", "animal_row", "deck_button", "deck_sprite", "hand_handler", "deck_count_label", "plant_button", "meat_button")]
 script = ExtResource("5_buma0")
 is_player_1 = true
 game_logic = NodePath("../../GameLogic")
@@ -229,6 +245,8 @@ deck_button = NodePath("TextureButton")
 deck_sprite = NodePath("P1DeckSprite")
 hand_handler = NodePath("../../Hand")
 deck_count_label = NodePath("P1DeckCount")
+plant_button = NodePath("../PlantButton")
+meat_button = NodePath("../MeatButton")
 
 [node name="P1DeckSprite" parent="Table/P1Deck" instance=ExtResource("2_qlt8m")]
 position = Vector2(592, 408)
@@ -244,6 +262,7 @@ offset_bottom = 472.0
 mouse_default_cursor_shape = 2
 
 [node name="P1DeckCount" type="Label" parent="Table/P1Deck"]
+visible = false
 offset_left = 568.0
 offset_top = 376.0
 offset_right = 616.0
@@ -260,6 +279,7 @@ position = Vector2(152, 72)
 visible = true
 
 [node name="P2DeckCount" type="Label" parent="Table/P2Deck"]
+visible = false
 offset_left = 128.0
 offset_top = 40.0
 offset_right = 176.0
@@ -348,6 +368,38 @@ stream = ExtResource("14_jpjud")
 
 [node name="P2Hand" type="Node2D" parent="Table"]
 position = Vector2(320, -88)
+
+[node name="MeatButton" type="Button" parent="Table"]
+modulate = Color(1, 1, 1, 0.431373)
+offset_left = 560.0
+offset_top = 312.0
+offset_right = 584.0
+offset_bottom = 336.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yp4fr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tmtel")
+toggle_mode = true
+
+[node name="MeatButtonSprite" type="Sprite2D" parent="Table"]
+position = Vector2(572, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("22_qc2ih")
+
+[node name="PlantButton" type="Button" parent="Table"]
+modulate = Color(1, 1, 1, 0.431373)
+offset_left = 600.0
+offset_top = 312.0
+offset_right = 624.0
+offset_bottom = 336.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_huowb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l5xsb")
+toggle_mode = true
+
+[node name="PlantButtonSprite" type="Sprite2D" parent="Table"]
+position = Vector2(612, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("23_iurk7")
 
 [node name="BlurRect" type="ColorRect" parent="."]
 visible = false

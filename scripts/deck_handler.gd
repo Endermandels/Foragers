@@ -13,6 +13,8 @@ class_name DeckHandler
 @export var deck_sprite: CardHandler
 @export var hand_handler: HandHandler ## Leave blank for P2
 @export var deck_count_label: Label
+@export var plant_button: Button
+@export var meat_button: Button
 
 const FOOD_CARD = preload("res://scenes/food_card.tscn")
 const ANIMAL_CARD = preload("res://scenes/animal_card.tscn")
@@ -23,6 +25,14 @@ func _ready() -> void:
 		disable_click()
 	game_logic.draw_cards.connect(draw_cards)
 	deck_count_label.text = str(deck.remaining())
+	plant_button.pressed.connect(_plant_button_toggled)
+	meat_button.pressed.connect(_meat_button_toggled)
+
+func _plant_button_toggled() -> void:
+	deck.plant_requested = plant_button.button_pressed
+
+func _meat_button_toggled() -> void:
+	deck.meat_requested = meat_button.button_pressed
 
 func spawn_card(card: Card) -> CardHandler:
 	var sc: CardHandler = null

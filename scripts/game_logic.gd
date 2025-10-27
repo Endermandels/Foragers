@@ -67,11 +67,11 @@ func draw_phase() -> void:
 		draw_cards.emit(n_beginning_cards_p1, true)
 		draw_cards.emit(n_beginning_cards_p2, false)
 	else:
-		var n_cards = 1
+		var n_cards = 2
 		if is_player_1_turn and p1_saving_up:
-			n_cards = 2
+			n_cards = 3
 		elif not is_player_1_turn and p2_saving_up:
-			n_cards = 2
+			n_cards = 3
 		draw_cards.emit(n_cards, is_player_1_turn)
 	draw_sfx.play()
 

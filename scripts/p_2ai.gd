@@ -30,11 +30,16 @@ func _show_card_draw() -> void:
     get_tree().create_timer(2).timeout.connect(sc.queue_free)
 
 func draw_cards(n_cards: int, player_1: bool) -> void:
+    if game_logic.is_player_1_turn:
+        return
     if player_1 == false:
         for i in range(n_cards):
             draw_card()
 
 func draw_card() -> void:
+    if game_logic.is_player_1_turn:
+        return
+    
     # Give the appearance of drawing the card
     var card = deck.draw_card()
     deck_count_label.text = str(deck.remaining())
@@ -121,8 +126,8 @@ func _buy_phase() -> void:
             get_tree().create_timer(randf_range(0.5, 1)).timeout.connect(_buy_phase)
         else:
             print("did not buy animal")
-            game_logic.progress_phase()
+            get_tree().create_timer(0.5).timeout.connect(game_logic.progress_phase)
     else:
         print("decided to save up food")
-        game_logic.progress_phase()
+        get_tree().create_timer(0.5).timeout.connect(game_logic.progress_phase)
 

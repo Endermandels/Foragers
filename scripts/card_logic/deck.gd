@@ -3,8 +3,12 @@ class_name Deck
 
 @export_group("Settings")
 @export var is_player_1: bool = false
-@export var randomize_deck: bool = false
-@export var deck_size: int = 30
+@export var randomize_deck: bool = false # Doesn't do anything anymore
+@export var deck_size: int = 30 # Doesn't do anything anymore
+@export var plant_requested: bool = false
+@export var meat_requested: bool = false
+
+var last_drew_plant: bool = false
 
 var cards: Array[Card] = []
 
@@ -63,8 +67,34 @@ func _get_random_food_card() -> FoodCard:
 func draw_card() -> Card:
     if cards.size() == 0:
         return null
-    var card = cards.pop_at(randi_range(0, cards.size() - 1))
-    remove_child(card)
+    
+    var card = FOOD_CARD_STATS.instantiate()
+    
+    if plant_requested and meat_requested:
+        card.plant_amount = 0 if last_drew_plant else 1
+        card.meat_amount = 1 if last_drew_plant else 0
+        last_drew_plant = not last_drew_plant
+        return card
+    if plant_requested:
+        card.plant_amount = 1
+        card.meat_amount = 0
+        last_drew_plant = true
+        return card
+    if meat_requested:
+        card.plant_amount = 0
+        card.meat_amount = 1
+        last_drew_plant = false
+        return card
+
+    if randi_range(0, 1):
+        card.plant_amount = 1
+        card.meat_amount = 0
+        last_drew_plant = true
+        return card
+    
+    card.plant_amount = 0
+    card.meat_amount = 1
+    last_drew_plant = false
     return card
 
 func remaining() -> int:
