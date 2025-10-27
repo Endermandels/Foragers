@@ -14,6 +14,8 @@ class_name P2AI
 @export var deck_count_label: Label
 @export var animal_join_sfx: AudioStreamPlayer
 
+var flag: bool = true # I'm tired, okay?
+
 func _ready() -> void:
     game_logic.draw_cards.connect(draw_cards)
     game_logic.buy_phase_entered.connect(_buy_phase)
@@ -30,16 +32,24 @@ func _show_card_draw() -> void:
     get_tree().create_timer(2).timeout.connect(sc.queue_free)
 
 func draw_cards(n_cards: int, player_1: bool) -> void:
-    if game_logic.is_player_1_turn:
-        return
     if player_1 == false:
         for i in range(n_cards):
             draw_card()
 
+func _determine_food_requests() -> void:
+    var plant_costs = 0
+    var meat_costs = 0
+    for card: AnimalCard in encounters_row.get_children():
+        if card.plant_cost > 0:
+            plant_costs += 1
+        if meat_costs > 0:
+            meat_costs += 1
+    deck.plant_requested = true if plant_costs > 1 else false
+    deck.meat_requested = true if meat_costs > 1 else false
+
 func draw_card() -> void:
-    if game_logic.is_player_1_turn:
-        return
-    
+    _determine_food_requests()
+
     # Give the appearance of drawing the card
     var card = deck.draw_card()
     deck_count_label.text = str(deck.remaining())
@@ -59,8 +69,9 @@ func draw_card() -> void:
     _show_card_draw()
     hand.add_child(card)
 
-    if not game_logic.is_player_1_turn:
+    if not game_logic.is_player_1_turn and flag:
         get_tree().create_timer(randf_range(1, 3)).timeout.connect(game_logic.progress_phase)
+        flag = false
 
 func _select_all_food() -> void:
     for food: FoodCard in hand.get_children():
@@ -130,4 +141,4 @@ func _buy_phase() -> void:
     else:
         print("decided to save up food")
         get_tree().create_timer(0.5).timeout.connect(game_logic.progress_phase)
-
+    flag = true
